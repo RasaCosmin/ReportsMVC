@@ -16,7 +16,7 @@ namespace MVCReports.Controllers
 
     public class HomeController : Controller
     {
-
+        [Authorize]
         public ActionResult Index()
         {
 
@@ -28,13 +28,14 @@ namespace MVCReports.Controllers
 
             reportViewer.ServerReport.ReportServerCredentials = new CustomCredentials("andrei", "P@ssw0rd", "http://172.17.2.2");        
 
-            reportViewer.ServerReport.ReportPath = "/TableWithParameters";
+            reportViewer.ServerReport.ReportPath = "/PieChart";
             reportViewer.ServerReport.ReportServerUrl = new Uri("http://172.17.2.2/reportserver");
 
             reportViewer.SizeToReportContent = true;
             reportViewer.Width = Unit.Percentage(100);
-            reportViewer.Height = Unit.Percentage(100);                      
-                                 
+            reportViewer.Height = Unit.Percentage(100);
+
+                  
             ViewBag.reportView = reportViewer;
             return View();
         }
