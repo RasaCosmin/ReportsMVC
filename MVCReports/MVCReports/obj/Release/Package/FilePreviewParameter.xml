@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="MvcReports" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Cosmin\\Documents\\Visual\ Studio\ 2015\\Projects\\MVCReports\\MVCReports\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Cosmin\\Documents\\Visual\ Studio\ 2015\\Projects\\MVCReports\\MVCReports\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=172.17.2.2;Initial Catalog=operations;User ID=sa;Password=P@ssw0rd" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Cosmin\\Documents\\Visual\ Studio\ 2015\\Projects\\MVCReports\\MVCReports\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
