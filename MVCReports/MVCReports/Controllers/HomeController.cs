@@ -26,10 +26,10 @@ namespace MVCReports.Controllers
             var reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Remote;
 
-            reportViewer.ServerReport.ReportServerCredentials = new CustomCredentials("andrei", "P@ssw0rd", "http://172.17.2.2");        
+            reportViewer.ServerReport.ReportServerCredentials = new CustomCredentials();        
 
-            reportViewer.ServerReport.ReportPath = "/PieChart";
-            reportViewer.ServerReport.ReportServerUrl = new Uri("http://172.17.2.2/reportserver");
+            reportViewer.ServerReport.ReportPath = "/Test/PieChart";
+            reportViewer.ServerReport.ReportServerUrl = new Uri(AppConstants.ServerURL);
 
             reportViewer.SizeToReportContent = true;
             reportViewer.Width = Unit.Percentage(100);

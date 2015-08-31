@@ -14,7 +14,12 @@ namespace MVCReports.Helpers
         private string _password;
         private string _domainName;
 
-        public CustomCredentials(string username, string password, string domain)
+        public CustomCredentials()
+        {
+            InitCustomCredentials("andrei", "P@ssw0rd", "http://172.17.2.2");
+        }
+
+        public void InitCustomCredentials(string username, string password, string domain)
         {
             _username = username;
             _password = password;
