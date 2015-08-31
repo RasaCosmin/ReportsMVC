@@ -80,7 +80,7 @@ namespace MVCReports.Models
 
     public class ConfigureTwoFactorViewModel
     {
-        public string SelectedProvider { get; set; }
+        public string SelectedPvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
 }
