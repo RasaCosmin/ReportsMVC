@@ -29,5 +29,7 @@ namespace MVCReports.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MVCReports.Models.UserWithRole> ApplicationUsers { get; set; }
     }
 }

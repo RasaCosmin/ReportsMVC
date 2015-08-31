@@ -102,7 +102,6 @@ D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Google.
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.OAuth.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Twitter.dll
-D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.Common.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.WebForms.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Web.Infrastructure.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Newtonsoft.Json.dll
@@ -116,6 +115,7 @@ D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\System.Web.WebPages.Deployment.
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\System.Web.WebPages.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\System.Web.WebPages.Razor.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\WebGrease.dll
+D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.Common.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.SqlServer.Types.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\System.Web.Helpers.xml
@@ -141,7 +141,6 @@ D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.OAuth.x
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Google.xml
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Projects\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache
 D:\Projects\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.pdb
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\bin\roslyn\csc.exe
