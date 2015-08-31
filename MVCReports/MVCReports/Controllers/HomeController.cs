@@ -10,13 +10,22 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Security.Principal;
 using MVCReports.Helpers;
+using MVCReports.Context;
+using MVCReports.Models;
 
 namespace MVCReports.Controllers
 {
 
     public class HomeController : Controller
     {
-        [Authorize]
+        private EntityContext db;
+
+        public HomeController()
+        {
+            db = new EntityContext();
+        }
+
+        //[Authorize]
         public ActionResult Index()
         {
 
@@ -37,7 +46,12 @@ namespace MVCReports.Controllers
 
                   
             ViewBag.reportView = reportViewer;
-            return View();
+            AccuracyViewModel accuracy = new AccuracyViewModel
+            {
+                ClientNames = db.Accuracy_Setup.ToList().Select(a=>a.CUSTOMER).ToList()
+            };
+
+            return View(accuracy);
         }
     }
 }
