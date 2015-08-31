@@ -22,7 +22,7 @@ namespace MVCReports.Controllers
 
             ServerReport report = new ServerReport();
                   
-
+            //astea tb sa le facem cumva global
             var reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Remote;
 
