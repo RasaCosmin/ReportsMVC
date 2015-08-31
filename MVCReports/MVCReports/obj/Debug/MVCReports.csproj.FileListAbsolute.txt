@@ -216,3 +216,4 @@ D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.M
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.dll
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.pdb
+D:\Projects\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache

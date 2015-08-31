@@ -7,4 +7,13 @@
   <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=172.17.2.2;Initial Catalog=operations;User ID=sa;Password=P@ssw0rd" tags="">
     <parameterEntry kind="XmlFile" scope="D:\\Projects\\ReportsMVC\\MVCReports\\MVCReports\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
+  <parameter name="AccuracyContext-Web.config Connection String" description="AccuracyContext Connection String used in web.config by the application to access the database." value="Data Source=172.17.2.2;Initial Catalog=operations;User ID=sa;Password=P@ssw0rd" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Projects\\ReportsMVC\\MVCReports\\MVCReports\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AccuracyContext']/@connectionString" />
+  </parameter>
+  <parameter name="MVCReportsContext-Web.config Connection String" description="MVCReportsContext Connection String used in web.config by the application to access the database." value="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=MVCReportsContext-20150831154041; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|MVCReportsContext-20150831154041.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Projects\\ReportsMVC\\MVCReports\\MVCReports\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MVCReportsContext']/@connectionString" />
+  </parameter>
+  <parameter name="operationsEntities-Web.config Connection String" description="operationsEntities Connection String used in web.config by the application to access the database." value="metadata=res://*/EntityModel.csdl|res://*/EntityModel.ssdl|res://*/EntityModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=172.17.2.2;initial catalog=operations;user id=sa;password=P@ssw0rd;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Projects\\ReportsMVC\\MVCReports\\MVCReports\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='operationsEntities']/@connectionString" />
+  </parameter>
 </parameters>
