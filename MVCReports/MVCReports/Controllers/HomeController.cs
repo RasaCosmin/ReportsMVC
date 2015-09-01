@@ -40,8 +40,6 @@ namespace MVCReports.Controllers
                 VerifySession();
             }
 
-            var role = System.Web.HttpContext.Current.Session["role"];
-
             ServerReport report = new ServerReport();
                   
             //astea tb sa le facem cumva global dada
@@ -53,11 +51,32 @@ namespace MVCReports.Controllers
             reportViewer.ServerReport.ReportPath = "/Test/PieChart";
             reportViewer.ServerReport.ReportServerUrl = new Uri(AppConstants.ServerURL);
 
-            reportViewer.SizeToReportContent = true;
-            reportViewer.Width = Unit.Percentage(100);
-            reportViewer.Height = Unit.Percentage(100);
+            //reportViewer.SizeToReportContent = true;
+            reportViewer.Width = Unit.Pixel(100);
+            reportViewer.Height = Unit.Pixel(100);
+        
+            var list = new List<ReportParameter>();
 
-                  
+            var p1 = new ReportParameter("StartDate", "13-03-2015");
+            var p2 = new ReportParameter("EndDate", "13-06-2015");
+
+            var projects = new string[] { "3M", "AHOLD" };
+
+            var p3 = new ReportParameter("Project",projects);
+
+            list.Add(p1);
+            list.Add(p2);
+            list.Add(p3);
+
+
+            reportViewer.ServerReport.SetParameters(list);
+            reportViewer.ServerReport.Refresh();
+            reportViewer.ShowParameterPrompts = false;
+
+            var s = reportViewer.ServerReport.GetDataSources();
+
+          
+
             ViewBag.reportView = reportViewer;
             AccuracyViewModel accuracy = new AccuracyViewModel();
             var customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
