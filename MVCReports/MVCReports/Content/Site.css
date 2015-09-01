@@ -22,3 +22,31 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.div-align-left{
+    display:inline-block;
+    border-style:double;
+    background-color:#ffffff;
+    width:20%;
+    height:110px;
+    margin:0px 10px 10px 0%;
+    border-radius:2px;
+    position:absolute;
+    left:10px;
+}
+
+.div-align-center{
+    display:inline-block;
+    width:50%;
+    height:110px;
+    border-radius:2px;
+    position:relative;
+    left:100px;
+}
+
+.nav-client-list ul{
+    overflow:hidden;
+    overflow-y:scroll;
+    height:100px;
+}
+
