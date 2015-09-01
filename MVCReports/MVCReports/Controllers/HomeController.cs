@@ -12,6 +12,10 @@ using System.Security.Principal;
 using MVCReports.Helpers;
 using MVCReports.Context;
 using MVCReports.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
 
 namespace MVCReports.Controllers
 {
@@ -25,9 +29,18 @@ namespace MVCReports.Controllers
             db = new EntityContext();
         }
 
-        //[Authorize]
-        public ActionResult Index()
+        [Authorize]
+        public async Task<ActionResult> Index()
         {
+
+            var inSession = await VerifyAndSetUserRole();
+
+            if(!inSession)
+            {
+                VerifySession();
+            }
+
+            var role = System.Web.HttpContext.Current.Session["role"];
 
             ServerReport report = new ServerReport();
                   
@@ -52,6 +65,37 @@ namespace MVCReports.Controllers
             };
 
             return View(accuracy);
+        }
+
+        private void VerifySession()
+        {
+            var role = System.Web.HttpContext.Current.Session["role"];
+            if(role != null)
+            {
+                System.Web.HttpContext.Current.Session.Remove("role");
+            }
+        }
+
+        private async Task<bool> VerifyAndSetUserRole()
+        {
+            var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = UserManager.Users.Where(u => u.UserName.Equals(User.Identity.Name)).First();
+
+            if (user == null)
+                return false;
+
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            var role = await RoleManager.FindByIdAsync(user.Roles.First().RoleId);
+
+            if (role == null)
+                return false;
+
+            var d = role.Name;
+
+            System.Web.HttpContext.Current.Session["role"] = d;
+
+
+            return true;
         }
     }
 }

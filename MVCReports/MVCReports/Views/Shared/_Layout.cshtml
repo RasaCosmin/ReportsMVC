@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @{ var  role = System.Web.HttpContext.Current.Session["role"];}
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,16 +20,22 @@
                 @Html.ActionLink("Report App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             @Html.Partial("_LoginPartial")
-            
+            @if (role != null)
+            {
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("User Role", "Index", "UserRole")</li>
-                    <li>@Html.ActionLink("Roles", "index", "Role")</li>
+                    @if (role.ToString().Equals("Admin"))
+                    {
+                     <li>@Html.ActionLink("User Role", "Index", "UserRole")</li>
+                    }
+                    @*<li>@Html.ActionLink("Roles", "index", "Role")</li>*@
                     @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
 
             </div>
+            }
         </div>
     </div>
     <div class="container body-content">

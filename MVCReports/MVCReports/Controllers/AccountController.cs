@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVCReports.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MVCReports.Controllers
 {
@@ -79,6 +80,11 @@ namespace MVCReports.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = UserManager.FindByEmail(model.Email);
+                    var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                    var role = await RoleManager.FindByIdAsync(user.Roles.First().RoleId);
+
+                    var d = role.Name;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -152,10 +158,19 @@ namespace MVCReports.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                var role = RoleManager.FindByName("Client");
+
+                user.Roles.Add(new IdentityUserRole()
+                {
+                    RoleId = role.Id,
+                    UserId = user.Id
+                });
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                   await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -391,6 +406,8 @@ namespace MVCReports.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            System.Web.HttpContext.Current.Session.Remove("role");
+            var role = System.Web.HttpContext.Current.Session["role"];
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
