@@ -9,18 +9,6 @@
 <div>
    @*@Html.ReportViewer(ViewBag.reportView as Microsoft.Reporting.WebForms.ReportViewer)*@
 </div>
-<body>
-    <div class="div-align-left">
-        <nav class="nav-client-list">
-            <ul>
-                @foreach (var name in Model.ClientNames)
-                {
-                    <li>@name</li>
-                }
-            </ul>
-        </nav>
-    </div>
-    <div class="div-align-center">
-        Centru
-    </div>
-</body>
+
+@Html.Partial("_CustomerLayout", Model)
+

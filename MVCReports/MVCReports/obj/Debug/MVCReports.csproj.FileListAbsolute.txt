@@ -143,6 +143,7 @@ D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Twitter
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Projects\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.pdb
+D:\Projects\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\bin\roslyn\csc.exe
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -213,7 +214,6 @@ D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.O
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Google.xml
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Twitter.xml
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.dll
 D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.pdb
-D:\Projects\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache
+D:\WorkRepository\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache

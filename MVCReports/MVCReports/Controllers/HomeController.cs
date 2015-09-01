@@ -59,10 +59,18 @@ namespace MVCReports.Controllers
 
                   
             ViewBag.reportView = reportViewer;
-            AccuracyViewModel accuracy = new AccuracyViewModel
+            AccuracyViewModel accuracy = new AccuracyViewModel();
+            var customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
+
+            foreach(var name in customersName)
             {
-                ClientNames = db.Accuracy_Setup.ToList().Select(a=>a.CUSTOMER).ToList()
-            };
+                var customer = new Customer {
+                    Name = name,
+                    Checked = false
+                };
+
+                accuracy.Customers.Add(customer);
+            }
 
             return View(accuracy);
         }

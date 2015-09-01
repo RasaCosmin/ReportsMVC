@@ -1,0 +1,31 @@
+﻿@model MVCReports.Models.AccuracyViewModel
+
+<body>
+    <div class="div-align-left">
+        <nav class="nav-client-list">
+            <ul>
+                @foreach (var customer in Model.Customers)
+                {
+                    @*<li><a href="#" id="a-client-list-item">@name</a></li>*@
+                    <li>
+                        @Html.CheckBoxFor(m => customer.Checked, new { @checked = "checked" })
+                    @Html.DisplayFor(m => customer.Name)
+                </li>
+                }
+            </ul>
+        </nav>
+    </div>
+    <div class="div-align-center">
+        <div class="header-reports">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Report App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+        </div>
+        Centru
+    </div>
+</body>
