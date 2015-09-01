@@ -10,7 +10,7 @@
         @Html.Partial("_CustomerLayout", Model)
     </div>
     <div class="col-md-9">
-        @Html.ReportViewer(ViewBag.reportView as ReportViewer)
+        @Html.ReportViewer(ViewBag.reportView as ReportViewer, new  { height="200" })
     </div>
 
     

@@ -52,8 +52,8 @@ namespace MVCReports.Controllers
             reportViewer.ServerReport.ReportServerUrl = new Uri(AppConstants.ServerURL);
 
             //reportViewer.SizeToReportContent = true;
-            reportViewer.Width = Unit.Pixel(100);
-            reportViewer.Height = Unit.Pixel(100);
+            //reportViewer.Width = Unit.Percentage(100);
+            //reportViewer.Height = Unit.Percentage(100);
         
             var list = new List<ReportParameter>();
 

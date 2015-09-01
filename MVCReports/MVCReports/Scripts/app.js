@@ -32,3 +32,7 @@ $(window).bind("load", function () {
             .resize(positionFooter)
 
 });
+
+$(function () {
+    $("#datepicker").datepicker();
+});

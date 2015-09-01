@@ -3,7 +3,7 @@
 <body>
         @using (Html.BeginForm("GenerateReport", "Home"))
         {
-            <input type="text" id="datepicker" />
+        <p>Start Date: <input type="text" id="datepicker" /></p>    
          <ul class="list-unstyled">
                 @for (int i = 0; i < Model.Customers.Count; i++)
                 {
@@ -18,8 +18,3 @@
             <input  value="Generate Report" type="submit"/>
     }
 </body>
-<script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
-</script>
