@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    height:500px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -23,13 +24,27 @@ textarea {
     max-width: 280px;
 }
 
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+.header-reports{
+    position:absolute;
+    left:0;
+    width:100%;
+    height:50px;
+    background:#215ce9;
+}
+
 .div-align-left{
     display:inline-block;
     border-style:double;
     background-color:#ffffff;
-    width:20%;
-    height:110px;
-    margin:0px 10px 10px 0%;
+    width:15%;
+    height:500px;
+    margin:0px 10px 10px -10px;
     border-radius:2px;
     position:absolute;
     left:10px;
@@ -40,13 +55,41 @@ textarea {
     width:50%;
     height:110px;
     border-radius:2px;
+    margin:0px 10px 10px 2%;
     position:relative;
     left:100px;
+}
+
+.div-fill{
+    display:inline-block;
+    width:100%;
+    height:500px;
+    border-radius:2px;
+    margin:70px 10px 10px 2%;
+    position:absolute;
+    left:50px;
 }
 
 .nav-client-list ul{
     overflow:hidden;
     overflow-y:scroll;
-    height:100px;
+    height:initial;
+    width:100%;
+    list-style-type:none;
+}
+
+#a-client-list-item{
+    text-decoration:none;
+}
+
+.nav-client-list ul li:active{
+    background:#867a7a;
+    text-decoration:none;
+}
+
+.nav-client-list ul li:hover{
+    background:#e6e2e2;
+    text-decoration:none;
+    cursor:pointer;
 }
 
