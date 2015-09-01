@@ -91,6 +91,10 @@ namespace MVCReports.Controllers
                 accuracy.Customers.Add(customer);
             }
 
+            var today = DateTime.Today;
+            accuracy.EndDate = today.ToString("MM-dd-yyyy");
+            accuracy.StartDate = today.AddMonths(-1).ToString("MM-dd-yyyy");
+
             return View(accuracy);
         }
 
@@ -123,6 +127,12 @@ namespace MVCReports.Controllers
 
 
             return true;
+        }
+
+        public ActionResult GenerateReport(AccuracyViewModel response)
+        {
+            var t = 0;
+            return View();
         }
     }
 }

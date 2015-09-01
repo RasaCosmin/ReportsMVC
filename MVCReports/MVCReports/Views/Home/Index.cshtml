@@ -5,10 +5,13 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div></div>
-<div>
-   @Html.ReportViewer(ViewBag.reportView as Microsoft.Reporting.WebForms.ReportViewer)
+<div class="row">
+    <div class="col-md-3">
+        @Html.Partial("_CustomerLayout", Model)
+    </div>
+    <div class="col-md-9">
+        @Html.ReportViewer(ViewBag.reportView as ReportViewer)
+    </div>
+
+    
 </div>
-
-@Html.Partial("_CustomerLayout", Model)
-

@@ -8,6 +8,9 @@ namespace MVCReports.Models
 {
     public class AccuracyViewModel
     {
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+
         public List<Customer> Customers { get; set; }
 
         public AccuracyViewModel(){
