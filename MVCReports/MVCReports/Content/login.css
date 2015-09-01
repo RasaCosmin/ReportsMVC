@@ -1,0 +1,33 @@
+﻿.form-group {
+    text-align: center;
+}
+
+.form-group .checkbox {
+    text-align: left;
+}
+
+.form-group input {
+   max-width: 100%;
+}
+
+.register-now {
+    font-weight: bold;
+}
+
+.register-now a {
+    color: #000;
+
+}
+
+.register-now a:hover, .register-now a:focus {
+    color: #222;
+}
+
+.form-register {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}

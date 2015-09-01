@@ -1,0 +1,19 @@
+﻿.btn-default{
+    background-color: #2980b9;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 30px 8px; 
+    border: none;
+    text-transform: uppercase;
+    min-width: 150px;
+}
+
+.btn-default:hover, .btn-default:focus {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+}
+
+
+
+

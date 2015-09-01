@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @{ var  role = System.Web.HttpContext.Current.Session["role"];}
@@ -42,8 +43,12 @@
         @RenderBody()
         
         <footer>
-            <hr />
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+            
+                <p>&copy; @DateTime.Now.Year - Recall</p>
+ 
+
+            
         </footer>
     </div>
 
