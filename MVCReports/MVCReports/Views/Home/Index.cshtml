@@ -13,6 +13,7 @@
         @Html.Partial("_CustomerLayout", Model)
     </div>
     <div class="col-md-9" id="report-center">
-        @Html.ReportViewer(ViewBag.reportView as Microsoft.Reporting.WebForms.ReportViewer, new { height = "500"})
+        @*@Html.ReportViewer(ViewBag.reportView as Microsoft.Reporting.WebForms.ReportViewer, new  { height="200" })*@
+        @Html.Partial("_ReportLayout")
     </div>
 </div>

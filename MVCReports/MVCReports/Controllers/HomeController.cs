@@ -166,13 +166,15 @@ namespace MVCReports.Controllers
             var p2 = new ReportParameter("Last3MonthDate", model.EndDate);
             list.Add(p2);
 
-            var projects = new List<string>();
+            var customers = model.Customers;
+            var projects = new string[customers.Count];
 
-            foreach (var customer in model.Customers)
-                if (selectAll || customer.Checked)
-                    projects.Add(customer.Name);
+            for(var i= 0;i< customers.Count;i++)
+                if (selectAll || customers[i].Checked)
+                    projects[i] = customers[i].Name;
 
-            var projectsNames = projects.ToArray();
+            //var projectsNames = projects.ToArray();
+            var projectsNames = new string[] { "3M"};
 
             var p3 = new ReportParameter("Project", projectsNames);          
             list.Add(p3);
@@ -187,24 +189,25 @@ namespace MVCReports.Controllers
             return reportViewer;
         }
 
-        public ActionResult GenerateReport(AccuracyViewModel response)
-        {
-           return RedirectToAction("Index", response);
-        }
+        //public ActionResult GenerateReport(AccuracyViewModel response)
+        //{
+        //   return RedirectToAction("Index", response);
+        //}
 
         [HttpPost]
-        public JsonResult GenerateReport(string customers)
+        public PartialViewResult GenerateReport(string customers)
         {
-            var convertedCusomers = JsonConvert.DeserializeObject<AccuracyViewModel>(customers);
+            if (customers == null)
+            {
+                return PartialView("_ReportLayout");
+            }
 
-            if (customers != null)
-            {
-                return Json(customers);
-            }
-            else
-            {
-                return Json("An Error Has occoured");
-            }
+            var reportModel = JsonConvert.DeserializeObject<AccuracyViewModel>(customers);
+            var convertedCustomers = reportModel.Customers.Where(r => r.Checked).ToList();
+            reportModel.Customers = convertedCustomers;
+            var accuracy = GenerateAccuracy(reportModel);
+
+            return PartialView("_ReportLayout");
         }
     }
 }
