@@ -23,6 +23,7 @@ namespace MVCReports
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/app.js",
+                      "~/Scripts/report.behaviour.js",
                       "~/Scripts/respond.js"
                      ));
 
