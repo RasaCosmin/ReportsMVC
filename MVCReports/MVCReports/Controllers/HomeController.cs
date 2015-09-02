@@ -148,23 +148,53 @@ namespace MVCReports.Controllers
             return reportViewer;
         }
 
-        public ActionResult GenerateReport(AccuracyViewModel response)
-        {
-           return RedirectToAction("Index", response);
-        }
+        //public ActionResult GenerateReport(AccuracyViewModel response)
+        //{
+        //   return RedirectToAction("Index", response);
+        //}
 
         [HttpPost]
-        public JsonResult GenerateReport(string customers)
+        public PartialViewResult GenerateReport(string customers)
         {
             var convertedCusomers = JsonConvert.DeserializeObject<AccuracyViewModel>(customers);
 
+            AccuracyViewModel accuracy = convertedCusomers;
+            var isAll = false;
+
+            if (convertedCusomers.Customers.Count == 0 && (convertedCusomers.StartDate == null || convertedCusomers.EndDate == null))
+            {
+                accuracy = new AccuracyViewModel();
+                var customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
+
+                foreach (var name in customersName)
+                {
+                    var customer = new Customer
+                    {
+                        Name = name,
+                        Checked = false
+                    };
+
+                    accuracy.Customers.Add(customer);
+                }
+
+                var today = DateTime.Today.AddMonths(-6);
+                accuracy.EndDate = today.ToString("dd-MM-yyyy");
+                accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
+                isAll = true;
+            }
+
+            var reportViewer = ConstructReportView(accuracy, isAll);
+
+            ViewBag.reportView = reportViewer;
+            ViewBag.Title = "Aass";
+
             if (customers != null)
             {
-                return Json(customers);
+                return PartialView("_ReportLayout");
             }
             else
             {
-                return Json("An Error Has occoured");
+                return PartialView("_ReportLayout");
             }
         }
     }

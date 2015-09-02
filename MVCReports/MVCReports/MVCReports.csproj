@@ -306,6 +306,7 @@
     <Content Include="Views\UserRole\ModifyRole.cshtml" />
     <Content Include="Views\Home\_CustomerLayout.cshtml" />
     <Content Include="Views\Home\_ClientLayout.cshtml" />
+    <Content Include="Views\Home\_ReportLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
