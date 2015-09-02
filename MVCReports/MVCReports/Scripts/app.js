@@ -42,6 +42,3 @@ $(function () {
     $("#datepickerEnd").datepicker({ dateFormat: 'dd-mm-yy' }).val();
 });
 
-$(function () {
-    $("#tabs").tabs();
-});

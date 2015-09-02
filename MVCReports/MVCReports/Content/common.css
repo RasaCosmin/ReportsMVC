@@ -47,6 +47,11 @@ h1,h2,h3 {
     text-align: left;
 }
 
+.navbar-brand {
+    font-weight: 500;
+    font-size: 24px;
+    color: #fff !important;
+}
 
 footer {
     height: 55px;
@@ -59,4 +64,35 @@ footer p {
     max-width: 1170px;
     margin: 0 auto;
     padding-top: 19px;
+}
+
+.navbar-inverse.tabs {
+    background-color: #2980b9;
+    color: #fff;
+    border-radius: 0;
+    border: none;
+}
+
+.navbar-inverse {
+    border-color: #222222;
+}
+
+.navbar-inverse.tabs ul li a {
+    color: #fff;
+}
+
+.navbar-inverse.tabs ul li.active a {
+    background: #222222;
+}
+
+.navbar-inverse.tabs ul li.active a:hover {
+    background: #222222;
+}
+
+.tabs .nav.navbar-nav {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
 }

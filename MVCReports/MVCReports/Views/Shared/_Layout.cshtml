@@ -40,19 +40,19 @@
             }
         </div>
     </div>
-    <div class="navbar navbar-inverse">
+    <div class="navbar navbar-inverse tabs">
         <div class="container">
             <div class="navbar-inner">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Email Office", "Index", "Home", new { reportType = "Email" }, null)</li>
-                    <li>@Html.ActionLink("Pie Chart", "Index", "Home", new { reportType = "Pie" }, null)</li>
-                    <li>@Html.ActionLink("Accuracy Statistik", "Index", "Home", new { reportType = "Accuracy" }, null)</li>
-                    <li>@Html.ActionLink("Stacked", "Index", "Home", new { reportType = "Stacked" }, null)</li>
+                    <li class="@(ViewBag.Type == "Email"?"active" : "")">@Html.ActionLink("Email Office", "Index", "Home", new { reportType = "Email" }, null)</li>
+                    <li  class="@(ViewBag.Type == "Pie"?"active" : "")">@Html.ActionLink("Pie Chart", "Index", "Home", new { reportType = "Pie" }, null)</li>
+                    <li  class="@(ViewBag.Type == "Accuracy"?"active" : "")">@Html.ActionLink("Accuracy Statistik", "Index", "Home", new { reportType = "Accuracy" }, null)</li>
+                    <li  class="@(ViewBag.Type == "Stacked"?"active" : "")">@Html.ActionLink("Stacked", "Index", "Home", new { reportType = "Stacked" }, null)</li>
                 </ul>
             </div>
         </div>
      </div>
-    <h2> @ViewBag.Title</h2>
+ 
     <div class="container body-content">
         @RenderBody()
     </div>  

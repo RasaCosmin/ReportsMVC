@@ -6,13 +6,13 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div class="row mt50 reports">
+<div class="row mt20 reports">
 
     <div class="col-md-3">
         @Html.Partial("_CustomerLayout", Model)
     </div>
     <div class="col-md-9">
-        @Html.ReportViewer(ViewBag.reportView as Microsoft.Reporting.WebForms.ReportViewer, new  { height="200"})
+        @Html.ReportViewer(ViewBag.reportView as Microsoft.Reporting.WebForms.ReportViewer, new { height = "500"})
     </div>
 
     

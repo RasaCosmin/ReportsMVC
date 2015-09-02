@@ -72,7 +72,7 @@ namespace MVCReports.Controllers
             var reportViewer = ConstructReportView(accuracy, isAll);
 
             ViewBag.reportView = reportViewer;
-            ViewBag.Title = _reportType;
+            ViewBag.Type = _reportType;
 
             return View(accuracy);
         }
@@ -114,7 +114,7 @@ namespace MVCReports.Controllers
             reportViewer.ProcessingMode = ProcessingMode.Remote;
 
             reportViewer.ServerReport.ReportServerCredentials = new CustomCredentials();
-
+           
             reportViewer.ServerReport.ReportPath = "/Genpact/Reports/VerticalStackedBar3Months";
             reportViewer.ServerReport.ReportServerUrl = new Uri(AppConstants.ServerURL);
             
@@ -143,7 +143,8 @@ namespace MVCReports.Controllers
             reportViewer.ServerReport.SetParameters(list);
             reportViewer.ServerReport.Refresh();
             reportViewer.ShowParameterPrompts = false;
-
+            reportViewer.Width = Unit.Pixel(720);
+            reportViewer.Height = Unit.Pixel(540);
             return reportViewer;
         }
 
