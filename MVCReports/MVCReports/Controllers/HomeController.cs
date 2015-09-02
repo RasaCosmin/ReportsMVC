@@ -48,7 +48,7 @@ namespace MVCReports.Controllers
 
             var accuracy = GenerateAccuracy(response); 
 
-            ViewBag.Title = _reportType;
+            ViewBag.Type = _reportType;
 
             return View(accuracy);
         }
@@ -60,6 +60,7 @@ namespace MVCReports.Controllers
 
             if (response.Customers.Count == 0 && (response.StartDate == null || response.EndDate == null))
             {
+                var dbService = new DatabaseService();
                 accuracy = new AccuracyViewModel();
 
                 var today = DateTime.Today.AddMonths(-6);
@@ -67,88 +68,51 @@ namespace MVCReports.Controllers
                 switch (_reportType)
                 {
                     case "Email":
-                        var customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                        foreach (var name in customersName)
-                        {
-                            var customer = new Customer
-                            {
-                                Name = name,
-                                Checked = false
-                            };
-
-                            accuracy.Customers.Add(customer);
-                        }
 
                         accuracy.EndDate = today.ToString("dd-MM-yyyy");
                         accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
 
                         break;
                     case "Pie":
-                        customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                        foreach (var name in customersName)
-                        {
-                            var customer = new Customer
-                            {
-                                Name = name,
-                                Checked = false
-                            };
-
-                            accuracy.Customers.Add(customer);
-                        }
 
                         accuracy.EndDate = today.ToString("dd-MM-yyyy");
                         accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
 
                         break;
                     case "Accuracy":
-                        customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                        foreach (var name in customersName)
-                        {
-                            var customer = new Customer
-                            {
-                                Name = name,
-                                Checked = false
-                            };
-
-                            accuracy.Customers.Add(customer);
-                        }
 
                         accuracy.EndDate = today.ToString("dd-MM-yyyy");
                         accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
 
                         break;
                     case "Stacked":
-                        customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                        foreach (var name in customersName)
-                        {
-                            var customer = new Customer
-                            {
-                                Name = name,
-                                Checked = false
-                            };
-
-                            accuracy.Customers.Add(customer);
-                        }
 
                         accuracy.EndDate = today.ToString("dd-MM-yyyy");
                         accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
 
                         break;
                 }
+
+
+                var customersName = dbService.GetList(_reportType);
+
+                foreach (var name in customersName)
+                {
+                    var customer = new Customer
+                    {
+                        Name = name,
+                        Checked = false
+                    };
+
+                    accuracy.Customers.Add(customer);
+                }
+
                 isAll = true;
             }
 
             var reportViewer = ConstructReportView(accuracy, isAll);
 
             ViewBag.reportView = reportViewer;
-
-            ViewBag.Type = _reportType;
-
-
 
             return accuracy;
         }
