@@ -1,0 +1,33 @@
+﻿#datepickerStart, #datepickerEnd {
+    padding: 3px 5px;
+}
+
+.list-unstyled {
+    padding-top: 20px;
+}
+
+.sidebar-reports p {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.sidebar-reports input {
+    max-width: 200px;
+    margin-top: 5px;
+    padding: 10px;
+    border: solid 4px #c9c9c9;
+    -webkit-transition: border 0.3s;
+     -moz-transition: border 0.3s;
+    -o-transition: border 0.3s;
+     transition: border 0.3s;
+}
+
+.sidebar-reports input:focus {
+  border: solid 4px #969696;
+}
+
+.sidebar-reports .list-unstyled {
+    height: 280px;
+    overflow-y: scroll;
+}
+

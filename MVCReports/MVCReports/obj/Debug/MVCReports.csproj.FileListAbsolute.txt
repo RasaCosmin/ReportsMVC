@@ -260,7 +260,6 @@ C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\System.Web.WebPag
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\System.Web.WebPages.Razor.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\WebGrease.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.WebForms.xml
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\System.Web.Helpers.xml
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\System.Web.Mvc.xml
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\System.Web.Optimization.xml
@@ -286,7 +285,9 @@ C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Se
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.pdb
+
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.Common.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.SqlServer.Types.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.WebForms.xml
+

@@ -2,7 +2,12 @@
 @using Microsoft.Reporting.WebForms;
 @model MVCReports.Models.AccuracyViewModel
 
-<div class="row ">
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row mt50 reports">
+
     <div class="col-md-3">
         @Html.Partial("_CustomerLayout", Model)
     </div>

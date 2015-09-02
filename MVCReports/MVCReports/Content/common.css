@@ -39,12 +39,20 @@ h1,h2,h3 {
     text-align: center;
 }
 
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
 
 footer {
     height: 55px;
     background-color: #222 !important;
     width: 100%;
-    color: #fff;
+    color: #999;
 }
 
 footer p {

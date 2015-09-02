@@ -33,11 +33,13 @@ $(window).bind("load", function () {
 
 });
 
+
 $(function () {
-    $("#datepickerStart").datepicker({ dateFormat: 'dd-mm-yy' });
+    $("#datepickerStart").datepicker({ dateFormat: 'dd-mm-yy' }).val();
 });
+
 $(function () {
-    $("#datepickerEnd").datepicker({ dateFormat: 'dd-mm-yy' });
+    $("#datepickerEnd").datepicker({ dateFormat: 'dd-mm-yy' }).val();
 });
 
 $(function () {
