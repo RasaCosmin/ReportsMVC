@@ -34,5 +34,8 @@ $(window).bind("load", function () {
 });
 
 $(function () {
-    $("#datepicker").datepicker();
+    $("#datepickerStart").datepicker();
+});
+$(function () {
+    $("#datepickerEnd").datepicker();
 });
