@@ -40,7 +40,7 @@
         var endDate = $("#datepickerEnd").val();
 
     	$("#customers-list li").each(function () {
-    		var isChecked = $(this).find("#customer-check").val();
+    	    var isChecked = $(this).find("#customer-check").is(":checked");
     		var name = $(this).find("#customer-name").text();
     		var customer = {
     		    Name: name,

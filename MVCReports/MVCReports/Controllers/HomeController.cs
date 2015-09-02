@@ -198,13 +198,15 @@ namespace MVCReports.Controllers
             var p2 = new ReportParameter("Last3MonthDate", model.EndDate);
             list.Add(p2);
 
-            var projects = new List<string>();
+            var customers = model.Customers;
+            var projects = new string[customers.Count];
 
-            foreach (var customer in model.Customers)
-                if (selectAll || customer.Checked)
-                    projects.Add(customer.Name);
+            for(var i= 0;i< customers.Count;i++)
+                if (selectAll || customers[i].Checked)
+                    projects[i] = customers[i].Name;
 
-            var projectsNames = projects.ToArray();
+            //var projectsNames = projects.ToArray();
+            var projectsNames = new string[] {"3M"};
 
             var p3 = new ReportParameter("Project", projectsNames);          
             list.Add(p3);
@@ -228,46 +230,17 @@ namespace MVCReports.Controllers
         [HttpPost]
         public PartialViewResult GenerateReport(string customers)
         {
-            var convertedCusomers = JsonConvert.DeserializeObject<AccuracyViewModel>(customers);
-
-            AccuracyViewModel accuracy = convertedCusomers;
-            var isAll = false;
-
-            if (convertedCusomers.Customers.Count == 0 && (convertedCusomers.StartDate == null || convertedCusomers.EndDate == null))
-            {
-                accuracy = new AccuracyViewModel();
-                var customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                foreach (var name in customersName)
-                {
-                    var customer = new Customer
-                    {
-                        Name = name,
-                        Checked = false
-                    };
-
-                    accuracy.Customers.Add(customer);
-                }
-
-                var today = DateTime.Today.AddMonths(-6);
-                accuracy.EndDate = today.ToString("dd-MM-yyyy");
-                accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
-                isAll = true;
-            }
-
-            var reportViewer = ConstructReportView(accuracy, isAll);
-
-            ViewBag.reportView = reportViewer;
-            ViewBag.Title = "Aass";
-
-            if (customers != null)
+            if (customers == null)
             {
                 return PartialView("_ReportLayout");
             }
-            else
-            {
-                return PartialView("_ReportLayout");
-            }
+
+            var reportModel = JsonConvert.DeserializeObject<AccuracyViewModel>(customers);
+            var convertedCustomers = reportModel.Customers.Where(r => r.Checked).ToList();
+            reportModel.Customers = convertedCustomers;
+            var accuracy = GenerateAccuracy(reportModel);
+
+            return PartialView("_ReportLayout");
         }
     }
 }
