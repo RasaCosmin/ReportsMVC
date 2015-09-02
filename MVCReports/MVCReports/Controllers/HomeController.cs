@@ -45,37 +45,108 @@ namespace MVCReports.Controllers
                 VerifySession();
             }
 
+
+            var accuracy = GenerateAccuracy(response); 
+
+            ViewBag.Title = _reportType;
+
+            return View(accuracy);
+        }
+
+        private AccuracyViewModel GenerateAccuracy(AccuracyViewModel response)
+        {
             AccuracyViewModel accuracy = response;
             var isAll = false;
 
-            if (response.Customers.Count==0 && (response.StartDate == null||response.EndDate == null))
+            if (response.Customers.Count == 0 && (response.StartDate == null || response.EndDate == null))
             {
                 accuracy = new AccuracyViewModel();
-                var customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                foreach (var name in customersName)
-                {
-                    var customer = new Customer
-                    {
-                        Name = name,
-                        Checked = false
-                    };
-
-                    accuracy.Customers.Add(customer);
-                }
 
                 var today = DateTime.Today.AddMonths(-6);
-                accuracy.EndDate = today.ToString("dd-MM-yyyy");
-                accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
+
+                switch (_reportType)
+                {
+                    case "Email":
+                        var customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
+
+                        foreach (var name in customersName)
+                        {
+                            var customer = new Customer
+                            {
+                                Name = name,
+                                Checked = false
+                            };
+
+                            accuracy.Customers.Add(customer);
+                        }
+
+                        accuracy.EndDate = today.ToString("dd-MM-yyyy");
+                        accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
+
+                        break;
+                    case "Pie":
+                        customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
+
+                        foreach (var name in customersName)
+                        {
+                            var customer = new Customer
+                            {
+                                Name = name,
+                                Checked = false
+                            };
+
+                            accuracy.Customers.Add(customer);
+                        }
+
+                        accuracy.EndDate = today.ToString("dd-MM-yyyy");
+                        accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
+
+                        break;
+                    case "Accuracy":
+                        customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
+
+                        foreach (var name in customersName)
+                        {
+                            var customer = new Customer
+                            {
+                                Name = name,
+                                Checked = false
+                            };
+
+                            accuracy.Customers.Add(customer);
+                        }
+
+                        accuracy.EndDate = today.ToString("dd-MM-yyyy");
+                        accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
+
+                        break;
+                    case "Stacked":
+                        customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
+
+                        foreach (var name in customersName)
+                        {
+                            var customer = new Customer
+                            {
+                                Name = name,
+                                Checked = false
+                            };
+
+                            accuracy.Customers.Add(customer);
+                        }
+
+                        accuracy.EndDate = today.ToString("dd-MM-yyyy");
+                        accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
+
+                        break;
+                }
                 isAll = true;
             }
 
             var reportViewer = ConstructReportView(accuracy, isAll);
 
             ViewBag.reportView = reportViewer;
-            ViewBag.Title = _reportType;
 
-            return View(accuracy);
+            return accuracy;
         }
 
         private void VerifySession()
@@ -122,7 +193,10 @@ namespace MVCReports.Controllers
             var list = new List<ReportParameter>();
 
             var p1 = new ReportParameter("StartDate", model.StartDate);
-           // var p2 = new ReportParameter("Last3MonthDate", model.EndDate);
+            list.Add(p1);
+           
+            var p2 = new ReportParameter("Last3MonthDate", model.EndDate);
+            list.Add(p2);
 
             var projects = new List<string>();
 
@@ -132,18 +206,16 @@ namespace MVCReports.Controllers
 
             var projectsNames = projects.ToArray();
 
-            var s = new string[] { "3M", "AHOLD" };
-
-            var p3 = new ReportParameter("Project", s);
-
-            list.Add(p1);
-           // list.Add(p2);
+            var p3 = new ReportParameter("Project", projectsNames);          
             list.Add(p3);
 
 
             reportViewer.ServerReport.SetParameters(list);
             reportViewer.ServerReport.Refresh();
             reportViewer.ShowParameterPrompts = false;
+
+            reportViewer.Width = Unit.Pixel(500);
+            reportViewer.Height = Unit.Pixel(500);
 
             return reportViewer;
         }
