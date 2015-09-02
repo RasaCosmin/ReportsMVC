@@ -3,7 +3,7 @@
 <body>
         @using (Html.BeginForm("GenerateReport", "Home"))
         {
-        <p>Start Date: <input type="text" id="datepicker" /></p>    
+        <p>Start Date: @Html.TextBoxFor(m=>m.StartDate, new { id = "datepicker"}) </p>
          <ul class="list-unstyled">
                 @for (int i = 0; i < Model.Customers.Count; i++)
                 {
