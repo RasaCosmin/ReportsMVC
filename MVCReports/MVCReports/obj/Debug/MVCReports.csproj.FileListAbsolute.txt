@@ -102,7 +102,6 @@ D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Google.
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.OAuth.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Twitter.dll
-D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.WebForms.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Web.Infrastructure.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Newtonsoft.Json.dll
 D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Owin.dll
@@ -290,3 +289,4 @@ C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.Common.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.SqlServer.Types.dll
+D:\Projects\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.WebForms.xml

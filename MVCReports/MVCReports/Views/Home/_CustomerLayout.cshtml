@@ -1,12 +1,12 @@
 ﻿@model MVCReports.Models.AccuracyViewModel
 
 <body>
-        @using (Html.BeginForm("GenerateReport", "Home"))
+        @using (Html.BeginForm())
         {
         <p>Start Date: @Html.TextBoxFor(m => m.StartDate, new { id = "datepickerStart" })
             @Html.HiddenFor(m => m.StartDate)
          </p>
-        <p>End Date: @Html.TextBoxFor(m => m.EndDate, new { id = "datepickerEnd" }) 
+        <p>End Date:   @Html.TextBoxFor(m => m.EndDate, new { id = "datepickerEnd" }) 
             @Html.HiddenFor(m => m.EndDate)
         </p>
          <ul class="list-unstyled">

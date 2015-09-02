@@ -34,8 +34,12 @@ $(window).bind("load", function () {
 });
 
 $(function () {
-    $("#datepickerStart").datepicker();
+    $("#datepickerStart").datepicker({ dateFormat: 'dd-mm-yy' });
 });
 $(function () {
-    $("#datepickerEnd").datepicker();
+    $("#datepickerEnd").datepicker({ dateFormat: 'dd-mm-yy' });
+});
+
+$(function () {
+    $("#tabs").tabs();
 });
