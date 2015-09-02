@@ -210,7 +210,7 @@ namespace MVCReports.Controllers
                     projects[i] = customers[i].Name;
 
             //var projectsNames = projects.ToArray();
-            var projectsNames = new string[] {"3M"};
+            var projectsNames = new string[] { "3M"};
 
             var p3 = new ReportParameter("Project", projectsNames);          
             list.Add(p3);
