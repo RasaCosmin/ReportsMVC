@@ -28,13 +28,13 @@ namespace MVCReports
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                       "~/Content/common.css",
-                       "~/Content/site.css",
-                       "~/Content/button.css",
-                      "~/Content/login.css",
                       "~/Content/themes/base/jquery-ui.css",
-                      "~/Content/themes/base/datepicker.css"
-
+                      "~/Content/themes/base/datepicker.css",
+                      "~/Content/common.css",
+                      "~/Content/site.css",
+                      "~/Content/button.css",
+                      "~/Content/login.css",
+                      "~/Content/reports.css"
                       ));
         }
     }
