@@ -69,7 +69,7 @@ namespace MVCReports.Controllers
             list.Add(p3);
 
 
-            reportViewer.ServerReport.SetParameters(list);
+          //  reportViewer.ServerReport.SetParameters(list);
             reportViewer.ServerReport.Refresh();
             reportViewer.ShowParameterPrompts = false;
 

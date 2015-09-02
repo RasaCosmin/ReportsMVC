@@ -248,7 +248,6 @@ C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Se
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.OAuth.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Security.Twitter.dll
-C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.WebForms.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Newtonsoft.Json.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Owin.dll
@@ -289,3 +288,5 @@ C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Se
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.pdb
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache
+C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.SqlServer.Types.dll
