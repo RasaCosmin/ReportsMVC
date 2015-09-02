@@ -35,7 +35,9 @@
     });
 
     function getCustomers() {
-    	var customers = [];
+        var customers = [];
+        var startDate = $("#datepickerStart").val();
+        var endDate = $("#datepickerEnd").val();
 
     	$("#customers-list li").each(function () {
     		var isChecked = $(this).find("#customer-check").val();
@@ -49,6 +51,8 @@
     	});
 
     	var customersObj = {
+    	    StartDate: startDate,
+            EndDate : endDate,
             Customers : customers
     	};
 
