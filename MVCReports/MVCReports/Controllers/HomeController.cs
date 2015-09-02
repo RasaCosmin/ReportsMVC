@@ -16,6 +16,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace MVCReports.Controllers
 {
@@ -222,6 +223,21 @@ namespace MVCReports.Controllers
         public ActionResult GenerateReport(AccuracyViewModel response)
         {
            return RedirectToAction("Index", response);
+        }
+
+        [HttpPost]
+        public JsonResult GenerateReport(string customers)
+        {
+            var convertedCusomers = JsonConvert.DeserializeObject<AccuracyViewModel>(customers);
+
+            if (customers != null)
+            {
+                return Json(customers);
+            }
+            else
+            {
+                return Json("An Error Has occoured");
+            }
         }
     }
 }
