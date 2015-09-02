@@ -13,19 +13,19 @@
                     End Date: @Html.TextBoxFor(m => m.EndDate, new { id = "datepickerEnd" })
                     @Html.HiddenFor(m => m.EndDate)
                 </p>
-                <ul class="list-unstyled">
+                <ul class="list-unstyled" id="customers-list">
                     @for (int i = 0; i < Model.Customers.Count; i++)
 
                 {
                         @*<li><a href="#" id="a-client-list-item">@name</a></li>*@
                         <li>
-                            @Html.CheckBoxFor(m => m.Customers[i].Checked, new { data_check = Model.Customers[i].Name })
+                            @Html.CheckBoxFor(m => m.Customers[i].Checked, new { data_check = Model.Customers[i].Name , id="customer-check"})
                             @Html.HiddenFor(m => m.Customers[i].Name)
-                            @Model.Customers[i].Name
+                            <label for="customer-check" id="customer-name">@Model.Customers[i].Name</label>
                         </li>
                     }
                 </ul>
             </div>
-            <input  value="Generate Report" type="submit" class="btn btn-default submit mt20"/>
+            <input  value="Generate Report" type="submit" class="btn btn-default submit mt20" id="generate-report-btn"/>
     }
 </body>
