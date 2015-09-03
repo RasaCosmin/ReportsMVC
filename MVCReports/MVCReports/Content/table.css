@@ -1,0 +1,27 @@
+﻿.table {
+    border: 1px solid #ccc;
+    font-family: 'Roboto', sans-serif;
+}
+
+.table tr td {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc !important;
+}
+
+.table tbody tr:nth-child(2n+1) {
+    background-color: #eee;
+}
+
+.table tbody tr:first-child {
+    background-color: #2980b9;
+    color: #fff;
+    font-size: 20px;
+}
+
+.table tbody tr:first-child th {
+    font-weight: 400;
+}
+
+.table-responsive-custom {
+    overflow-x: scroll;
+}

@@ -45,14 +45,14 @@ $(window).bind("load", function () {
 });
 
 $(window).bind('resize', function () {
-    $(window).resize(function () {
+    //$(window).resize(function () {
         var contentHeight = $(window).height();
         var footerHeight = $('footer').height();
         var footerTop = $('footer').position().top + footerHeight;
         if (footerTop < contentHeight) {
             $('footer').css('margin-top', (contentHeight - footerTop) + 'px');
         }
-    });
+    //});
     
 });
 
