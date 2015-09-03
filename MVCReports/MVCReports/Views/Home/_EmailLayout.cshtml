@@ -1,0 +1,16 @@
+﻿@model MVCReports.Models.AccuracyViewModel
+
+<body>
+    <div class="sidebar-reports">
+        <p>
+            Start Date: @Html.TextBoxFor(m => m.StartDate, new { id = "datepickerStart" })
+            @Html.HiddenFor(m => m.StartDate)
+        </p>
+        <p>
+            End Date: @Html.TextBoxFor(m => m.EndDate, new { id = "datepickerEnd" })
+            @Html.HiddenFor(m => m.EndDate)
+        </p>
+        @Html.DropDownListFor(m => Model.Email, new SelectList(Model.Customers.Select(c=>c.Name).ToList(), Model.Customers.First()),new { id="email-list"})
+    </div>
+    <input value="Generate Report" type="submit" class="btn btn-default submit mt20 " id="generate-report-btn" />
+</body>

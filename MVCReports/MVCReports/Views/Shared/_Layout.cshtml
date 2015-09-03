@@ -30,7 +30,13 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         @if (role.ToString().Equals("Admin"))
                         {
-                            <li>@Html.ActionLink("User Role", "Index", "UserRole")</li>
+                            <li class=" dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Management <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("User Role", "Index", "UserRole")</li>
+                                    <li>@Html.ActionLink("User Role", "Index", "UserRole")</li>
+                                </ul>
+                            </li>
                         }
                         @*<li>@Html.ActionLink("Roles", "index", "Role")</li>*@
                         @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
@@ -40,19 +46,21 @@
             }
         </div>
     </div>
+@if (role != null)
+{
     <div class="navbar navbar-inverse tabs">
         <div class="container">
             <div class="navbar-inner">
                 <ul class="nav navbar-nav">
-                    <li class="@(ViewBag.Type == "Email"?"active" : "")">@Html.ActionLink("Email Office", "Index", "Home", new { reportType = "Email" }, null)</li>
-                    <li  class="@(ViewBag.Type == "Pie"?"active" : "")">@Html.ActionLink("Pie Chart", "Index", "Home", new { reportType = "Pie" }, null)</li>
-                    <li  class="@(ViewBag.Type == "Accuracy"?"active" : "")">@Html.ActionLink("Accuracy Statistik", "Index", "Home", new { reportType = "Accuracy" }, null)</li>
-                    <li  class="@(ViewBag.Type == "Stacked"?"active" : "")">@Html.ActionLink("Stacked", "Index", "Home", new { reportType = "Stacked" }, null)</li>
+                    <li class="@(ViewBag.Type == "Email"?"active" : "")">@Html.ActionLink("Email Office", "Index", "Home", new { reportType = "Email" }, new { name = "Email" })</li>
+                    <li class="@(ViewBag.Type == "Pie"?"active" : "")">@Html.ActionLink("Pie Chart", "Index", "Home", new { reportType = "Pie" }, new { name = "Pie" })</li>
+                    <li class="@(ViewBag.Type == "Accuracy"?"active" : "")">@Html.ActionLink("Accuracy Statistik", "Index", "Home", new { reportType = "Accuracy" }, new { name = "Accuracy" })</li>
+                    <li class="@(ViewBag.Type == "Stacked"?"active" : "")">@Html.ActionLink("Stacked", "Index", "Home", new { reportType = "Stacked" }, new { name = "Stacked" })</li>
                 </ul>
             </div>
         </div>
      </div>
- 
+}
     <div class="container body-content">
         @RenderBody()
     </div>  

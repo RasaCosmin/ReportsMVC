@@ -24,19 +24,20 @@ namespace MVCReports.Controllers
     public class HomeController : Controller
     {
         private EntityContext db;
-        private static string _reportType;
+        public static string ReportType;
 
         public HomeController()
         {
             db = new EntityContext();
-            _reportType = "Email";
+            if(ReportType==null||ReportType=="")
+            ReportType = "Email";
         }
 
         [Authorize]
         public async Task<ActionResult> Index(AccuracyViewModel response = null, string reportType="")
         {
             if (reportType != "")
-                _reportType = reportType;
+                ReportType = reportType;
 
             var inSession = await VerifyAndSetUserRole();
 
@@ -48,7 +49,7 @@ namespace MVCReports.Controllers
 
             var accuracy = GenerateAccuracy(response); 
 
-            ViewBag.Title = _reportType;
+            ViewBag.Type = ReportType;
 
             return View(accuracy);
         }
@@ -60,95 +61,59 @@ namespace MVCReports.Controllers
 
             if (response.Customers.Count == 0 && (response.StartDate == null || response.EndDate == null))
             {
+                var dbService = new DatabaseService();
                 accuracy = new AccuracyViewModel();
 
                 var today = DateTime.Today.AddMonths(-6);
 
-                switch (_reportType)
+                switch (ReportType)
                 {
                     case "Email":
-                        var customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                        foreach (var name in customersName)
-                        {
-                            var customer = new Customer
-                            {
-                                Name = name,
-                                Checked = false
-                            };
-
-                            accuracy.Customers.Add(customer);
-                        }
 
                         accuracy.EndDate = today.ToString("dd-MM-yyyy");
                         accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
 
                         break;
                     case "Pie":
-                        customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                        foreach (var name in customersName)
-                        {
-                            var customer = new Customer
-                            {
-                                Name = name,
-                                Checked = false
-                            };
-
-                            accuracy.Customers.Add(customer);
-                        }
 
                         accuracy.EndDate = today.ToString("dd-MM-yyyy");
                         accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
 
                         break;
                     case "Accuracy":
-                        customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                        foreach (var name in customersName)
-                        {
-                            var customer = new Customer
-                            {
-                                Name = name,
-                                Checked = false
-                            };
-
-                            accuracy.Customers.Add(customer);
-                        }
 
                         accuracy.EndDate = today.ToString("dd-MM-yyyy");
                         accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
 
                         break;
                     case "Stacked":
-                        customersName = db.Accuracy_Setup.ToList().Select(a => a.CUSTOMER).ToList();
-
-                        foreach (var name in customersName)
-                        {
-                            var customer = new Customer
-                            {
-                                Name = name,
-                                Checked = false
-                            };
-
-                            accuracy.Customers.Add(customer);
-                        }
 
                         accuracy.EndDate = today.ToString("dd-MM-yyyy");
                         accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
 
                         break;
                 }
+
+
+                var customersName = dbService.GetList(ReportType);
+
+                foreach (var name in customersName)
+                {
+                    var customer = new Customer
+                    {
+                        Name = name,
+                        Checked = false
+                    };
+
+                    accuracy.Customers.Add(customer);
+                }
+
                 isAll = true;
             }
 
             var reportViewer = ConstructReportView(accuracy, isAll);
 
             ViewBag.reportView = reportViewer;
-
-            ViewBag.Type = _reportType;
-
-
 
             return accuracy;
         }
@@ -190,29 +155,65 @@ namespace MVCReports.Controllers
             reportViewer.ProcessingMode = ProcessingMode.Remote;
 
             reportViewer.ServerReport.ReportServerCredentials = new CustomCredentials();
-           
-            reportViewer.ServerReport.ReportPath = "/Genpact/Reports/VerticalStackedBar3Months";
             reportViewer.ServerReport.ReportServerUrl = new Uri(AppConstants.ServerURL);
-            
+
             var list = new List<ReportParameter>();
 
-            var p1 = new ReportParameter("StartDate", model.StartDate);
-            list.Add(p1);
-           
-            var p2 = new ReportParameter("Last3MonthDate", model.EndDate);
-            list.Add(p2);
+            switch (ReportType)
+            {
+                case "Email":
+                    reportViewer.ServerReport.ReportPath = "/Genpact/Reports/EmailOffice365";
+                    var emailStartDate = new ReportParameter("pStartDate", model.StartDate);
+                    list.Add(emailStartDate);
 
-            var projects = new List<string>();
+                    var emailEndDate = new ReportParameter("pEndDate", model.EndDate);
+                    list.Add(emailEndDate);
 
-            foreach (var customer in model.Customers)
-                if (selectAll || customer.Checked)
-                    projects.Add(customer.Name);
+                    var email = model.Customers.FirstOrDefault(e => e.Checked == true); 
 
-            var projectsNames = projects.ToArray();
+                    var emailsParam = new ReportParameter("pEmailAddress", email!=null?email.Name:"");
+                    list.Add(emailsParam);
+                    break;
+                case "Pie":
+                    reportViewer.ServerReport.ReportPath = "/Genpact/Reports/PieChart";
+                    var pieStartDate = new ReportParameter("StartDate", model.StartDate);
+                    list.Add(pieStartDate);
 
-            var p3 = new ReportParameter("Project", projectsNames);          
-            list.Add(p3);
+                    var pieEndDate = new ReportParameter("EndDate", model.EndDate);
+                    list.Add(pieEndDate);
 
+                    var pieCustomers = model.Customers;
+                    var pieProjects = new string[pieCustomers.Count];
+
+                    for (var i = 0; i < pieCustomers.Count; i++)
+                        if (selectAll || pieCustomers[i].Checked)
+                            pieProjects[i] = pieCustomers[i].Name;
+
+                    var pieProjectsParam = new ReportParameter("Project", pieProjects);
+                    list.Add(pieProjectsParam);
+                    break;
+                case "Accuracy":
+                    reportViewer.ServerReport.ReportPath = "/Genpact/Reports/VerticalBar_AccuracyStatistik";
+                    var acc = model.Customers.FirstOrDefault(e => e.Checked == true);
+                    var accParam = new ReportParameter("pCustomer", acc!=null?acc.Name:"");
+                    list.Add(accParam);
+                    break;
+                case "Stacked":
+                    reportViewer.ServerReport.ReportPath = "/Genpact/Reports/VerticalStackedBar3Months";
+                    var stackedStartDate = new ReportParameter("StartDate", model.StartDate);
+                    list.Add(stackedStartDate);
+
+                    var customers = model.Customers;
+                    var projects = new string[customers.Count];
+
+                    for (var i = 0; i < customers.Count; i++)
+                        if (selectAll || customers[i].Checked)
+                            projects[i] = customers[i].Name;
+
+                    var stackedProjects = new ReportParameter("Project", projects);
+                    list.Add(stackedProjects);
+                    break;
+            }         
 
             reportViewer.ServerReport.SetParameters(list);
             reportViewer.ServerReport.Refresh();
@@ -223,24 +224,25 @@ namespace MVCReports.Controllers
             return reportViewer;
         }
 
-        public ActionResult GenerateReport(AccuracyViewModel response)
-        {
-           return RedirectToAction("Index", response);
-        }
+        //public ActionResult GenerateReport(AccuracyViewModel response)
+        //{
+        //   return RedirectToAction("Index", response);
+        //}
 
         [HttpPost]
-        public JsonResult GenerateReport(string customers)
+        public PartialViewResult GenerateReport(string customers)
         {
-            var convertedCusomers = JsonConvert.DeserializeObject<AccuracyViewModel>(customers);
+            if (customers == null)
+            {
+                return PartialView("_ReportLayout");
+            }
 
-            if (customers != null)
-            {
-                return Json(customers);
-            }
-            else
-            {
-                return Json("An Error Has occoured");
-            }
+            var reportModel = JsonConvert.DeserializeObject<AccuracyViewModel>(customers);
+            var convertedCustomers = reportModel.Customers.Where(r => r.Checked).ToList();
+            reportModel.Customers = convertedCustomers;
+            var accuracy = GenerateAccuracy(reportModel);
+
+            return PartialView("_ReportLayout");
         }
     }
 }

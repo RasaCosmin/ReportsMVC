@@ -186,6 +186,7 @@
     </Compile>
     <Compile Include="Helpers\AppConstants.cs" />
     <Compile Include="Helpers\CustomServerCredentials.cs" />
+    <Compile Include="Helpers\DatabaseService.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AccuracyModel.cs" />
     <Compile Include="Models\AccuracyViewModel.cs" />
@@ -305,7 +306,8 @@
     <Content Include="Views\UserRole\Index.cshtml" />
     <Content Include="Views\UserRole\ModifyRole.cshtml" />
     <Content Include="Views\Home\_CustomerLayout.cshtml" />
-    <Content Include="Views\Home\_ClientLayout.cshtml" />
+    <Content Include="Views\Home\_EmailLayout.cshtml" />
+    <Content Include="Views\Home\_ReportLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
