@@ -1,0 +1,35 @@
+﻿@model MVCReports.Models.AssignedProjectModel
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            @foreach (var k in Model.AssignedProject.Keys)
+            {
+                <th>
+                    @Html.DisplayName(k)
+            </th>
+            }
+        </tr>
+        <tr>
+            @foreach (var pair in Model.AssignedProject)
+            {
+                <td>
+                    <ul class="list-unstyled" id="customers-list">
+                        @for (int i = 0; i < pair.Value.Count; i++)
+                        {
+                            <li>
+                                @Html.CheckBoxFor(m => m.AssignedProject[pair.Key][i].Checked, new { data_check = Model.AssignedProject[pair.Key][i].Name, id = "customer-check" })
+                                @Html.DisplayFor(m => m.AssignedProject[pair.Key][i].Name)
+                                @Html.HiddenFor(m => m.AssignedProject[pair.Key][i].Name)
+                            </li>
+                        }
+                    </ul>
+                </td>
+            }
+        </tr>
+
+    </table>
+
+    <input value="Save" type="submit" />
+}
