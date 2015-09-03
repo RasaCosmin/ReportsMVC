@@ -1,4 +1,16 @@
-﻿.form-group {
+﻿
+/*labels*/
+
+.form-register { /*align content to center of the screen*/
+    width: 100%;
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.form-group {
     text-align: center;
 }
 
@@ -9,6 +21,8 @@
 .form-group input {
    max-width: 100%;
 }
+
+/*text-under-labels*/
 
 .register-now {
     font-weight: bold;
@@ -23,11 +37,4 @@
     color: #222;
 }
 
-.form-register {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-}
+

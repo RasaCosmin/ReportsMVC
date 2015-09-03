@@ -1,10 +1,5 @@
-﻿#datepickerStart, #datepickerEnd {
-    padding: 3px 5px;
-}
-
-.list-unstyled {
-    padding-top: 20px;
-}
+﻿
+/*sidebar elements*/
 
 .sidebar-reports p {
     font-weight: 500;
@@ -17,9 +12,9 @@
     padding: 10px;
     border: solid 4px #c9c9c9;
     -webkit-transition: border 0.3s;
-     -moz-transition: border 0.3s;
+    -moz-transition: border 0.3s;
     -o-transition: border 0.3s;
-     transition: border 0.3s;
+    transition: border 0.3s;
 }
 
 .sidebar-reports input:focus {
@@ -27,8 +22,34 @@
 }
 
 .sidebar-reports .list-unstyled {
-    height: 280px;
+    height: 310px;
     overflow-y: scroll;
+}
+
+#datepickerStart, #datepickerEnd {
+    padding: 3px 5px;
+}
+
+.list-unstyled {
+    padding-top: 20px;
+}
+
+/*media queries*/
+
+@media(max-width: 992px) {
+       .sidebar-reports p {
+           float: left;
+           padding: 10px 20px;
+       }
+
+       .sidebar-reports .list-unstyled {
+           clear: both;
+       }
+
+       .btn.btn-default.submit {
+           margin-bottom: 35px;
+       }
+
 }
 
 

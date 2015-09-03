@@ -1,4 +1,7 @@
-﻿.btn-default{
+﻿
+/*default buttons*/
+
+.btn-default{
     background-color: #2980b9;
     color: #fff;
     font-size: 14px;
