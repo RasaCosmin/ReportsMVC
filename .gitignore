@@ -1,0 +1,6 @@
+*.suo
+MVCReports/MVCReports/obj/
+MVCReports/MVCReports/bin/
+MVCReports/.vs/
+*.exe
+*.user

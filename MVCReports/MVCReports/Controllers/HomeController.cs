@@ -246,7 +246,7 @@ namespace MVCReports.Controllers
             reportViewer.ServerReport.Refresh();
             reportViewer.ShowParameterPrompts = false;
             reportViewer.Width = Unit.Pixel(720);
-            reportViewer.Height = Unit.Pixel(540);
+            reportViewer.Height = Unit.Pixel(600);
 
             return reportViewer;
         }
