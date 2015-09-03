@@ -56,16 +56,28 @@ function sendCustomersFromList(currentType) {
 
 function selectCheckBoxOnNameClick() {
     $("#customers-list li").each(function () {
-        $(this).click(function () {
-            var isChecked = $(this).find("#customer-check").is(":checked");
+        var checkBtn = $(this).find("#customer-check");
+        $(this).find("#customer-name").click(function () {
+            var isChecked = checkBtn.is(":checked");
             var name = $(this).find("#customer-name").text();
 
             if (isChecked == true) {
-                $(this).find("#customer-check").prop('checked', false);
+                checkBtn.prop('checked', false);
             } else {
-                $(this).find("#customer-check").prop('checked', true);
+                checkBtn.prop('checked', true);
             }
         });
+
+        //$(this).find("#customer-check").click(function () {
+        //    var isChecked = $(this).find("#customer-check").is(":checked");
+        //    var name = $(this).find("#customer-name").text();
+
+        //    if (isChecked == true) {
+        //        $(this).find("#customer-check").prop('checked', false);
+        //    } else {
+        //        $(this).find("#customer-check").prop('checked', true);
+        //    }
+        //});
     });
 };
 
