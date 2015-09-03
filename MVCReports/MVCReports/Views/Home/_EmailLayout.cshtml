@@ -10,22 +10,7 @@
             End Date: @Html.TextBoxFor(m => m.EndDate, new { id = "datepickerEnd" })
             @Html.HiddenFor(m => m.EndDate)
         </p>
-        <ul class="list-unstyled" id="customers-list">
-            @for (int i = 0; i < Model.Customers.Count; i++)
-
-            {
-                @*<li><a href="#" id="a-client-list-item">@name</a></li>*@
-                <li>
-                    @*@Html.CheckBoxFor(m => m.Customers[i].Checked, new { data_check = Model.Customers[i].Name , id="customer-check"})*@
-                    @*@Html.HiddenFor(m => m.Customers[i].Name)*@
-                    <input type="checkbox" value="false" id="customer-check" />
-                    <label id="customer-name">@Model.Customers[i].Name</label>
-                </li>
-            }
-            
-        </ul>
-        @Html.LabelFor(m=>Model.Email)
-        @Html.DropDownListFor(m => Model.Email, new SelectList(Model.Customers, Model.Customers.First()))
+        @Html.DropDownListFor(m => Model.Email, new SelectList(Model.Customers.Select(c=>c.Name).ToList(), Model.Customers.First()),new { id="email-list"})
     </div>
-    <input value="Generate Report" type="submit" class="btn btn-default submit mt20" id="generate-report-btn" />
+    <input value="Generate Report" type="submit" class="btn btn-default submit mt20 " id="generate-report-btn" />
 </body>
