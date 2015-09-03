@@ -10,10 +10,14 @@ namespace MVCReports.Context
     public class EntityContext : DbContext 
     {
         public virtual DbSet<AccuracyModel> Accuracy_Setup { get; set; }
+        public virtual DbSet<UserProjectsModel> UserProject { get; set; }
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AccuracyModel>().ToTable("Accuracy_Setup");
+            modelBuilder.Entity<UserProjectsModel>().ToTable("UserProject");
             base.OnModelCreating(modelBuilder);
         }
 

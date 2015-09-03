@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using MVCReports.Context;
+using MVCReports.Helpers;
 using MVCReports.Models;
 using System;
 using System.Collections.Generic;
@@ -28,10 +30,12 @@ namespace MVCReports.Controllers
         }
 
         private ApplicationDbContext context;
+        private EntityContext db;
 
         public UserRoleController()
         {
             context = new ApplicationDbContext();
+            db = new EntityContext();
         }
 
         // GET: User
@@ -91,5 +95,49 @@ namespace MVCReports.Controllers
             return RedirectToAction("index");
         }
 
+        public ActionResult AssingProjectToUser(string userName)
+        {
+            var projectList = new Dictionary<string, List<Customer>>();                              
+           
+            projectList.Add("Pie",ConstructCustomerList("Pie", userName));
+            projectList.Add("Stacked", ConstructCustomerList("Stacked", userName));
+            projectList.Add("Accuracy", ConstructCustomerList("Accuracy", userName));
+
+            var assignedProjects= new AssignedProjectModel() { AssignedProject = projectList };
+
+            return View(assignedProjects);
+        }
+
+        private List<Customer> ConstructCustomerList(string table, string userName)
+        {
+            var list = new List<Customer>();
+
+            var dbService = new DatabaseService();
+            var customers = dbService.GetList(table);
+
+            var userProjects = db.UserProject.Where(e => e.UserName == userName && e.Type == table).Select(e => e.CustomerName).ToList();
+
+            foreach(var c in customers)
+            {
+                var customer = new Customer { Checked = false, Name = c };
+                
+                if(userProjects.Contains(c))
+                {
+                    customer.Checked = true;
+                }
+
+                list.Add(customer);
+            }
+
+
+            return list;
+        }
+
+        [HttpPost]
+        public ActionResult AssingProjectToUser(AssignedProjectModel projects)
+        {
+            var t  = ModelState.IsValid;
+            return RedirectToAction("index");
+        }
     }
 }

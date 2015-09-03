@@ -38,6 +38,10 @@
     padding-top: 20px;
 }
 
+.list-unstyled input {
+    width: auto;
+}
+
 /*media queries*/
 
 @media(max-width: 992px) {

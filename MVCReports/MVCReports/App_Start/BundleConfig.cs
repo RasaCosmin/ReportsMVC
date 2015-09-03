@@ -35,7 +35,8 @@ namespace MVCReports
                       "~/Content/common.css",
                       "~/Content/button.css",
                       "~/Content/login.css",
-                      "~/Content/reports.css"
+                      "~/Content/reports.css",
+                      "~/Content/table.css"
                       ));
         }
     }
