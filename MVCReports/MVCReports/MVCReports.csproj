@@ -207,6 +207,7 @@
     <Content Include="Content\common.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\reports.css" />
+    <Content Include="Content\table.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />

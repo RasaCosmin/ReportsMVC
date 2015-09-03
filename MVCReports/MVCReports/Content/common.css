@@ -110,6 +110,23 @@ h1,h2,h3 {
     -moz-transform: translate(-50%, 0);
 }
 
+/*submenu*/
+
+.dropdown.open .dropdown-menu {
+    background-color: #080808;
+    border-radius: 0;
+    border: 0;
+    
+}
+
+.dropdown.open .dropdown-menu li a {
+    color: #999;
+}
+
+.dropdown.open .dropdown-menu li a:hover, .dropdown.open .dropdown-menu li a:focus {
+    color: #fff;
+}
+
 /*footer*/
 
 footer {
