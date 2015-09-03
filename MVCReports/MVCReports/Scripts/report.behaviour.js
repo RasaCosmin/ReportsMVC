@@ -3,11 +3,23 @@
 
     $("#report-type-list li").each(function () {
         var itemClass = $(this).attr('class');
+        var name = $(this).find('a').attr('name');
 
         if (itemClass == "active") {
             currentType = $(this).find('a').attr('name');
         }
     });
+
+    //if (currentType == "Stacked") {
+    //    $("#datepickerEnd").css("display", "none");
+    //    $("#datepickerEndText").css("display", "none");
+    //} else if (currentType == "Pie") {
+    //    $("#datepickerEnd").css("display", "block");
+    //    $("#datepickerEndText").css("display", "block");
+    //} else if (currentType == "Email") {
+    //    $("#datepickerEnd").css("display", "block");
+    //    $("#datepickerEndText").css("display", "block");
+    //}
 
     $("#generate-report-btn").click(function () {
         sendCustomersFromList(currentType);
@@ -24,12 +36,13 @@ function sendCustomersFromList(currentType) {
             list = getEmail();
             break;
         case "Pie":
-            list = getCustomers();
+            list = getCustomers(currentType);
             break;
         case "Accuracy":
+            list = getCustomer();
             break;
         case "Stacked":
-            list = getCustomers();
+            list = getCustomers(currentType);
             break;
         default:
             break;
@@ -56,6 +69,25 @@ function selectCheckBoxOnNameClick() {
     });
 };
 
+function getCustomer() {
+    var customers = [];
+    var selectedOption = $("#customer-dropdown-list option:selected").text();
+
+    var customer = {
+        Name: selectedOption,
+        Checked: true
+    };
+
+    customers.push(customer);
+    var customerObj = {
+        StartDate: "",
+        EndDate: "",
+        Customers: customers
+    };
+
+    return customerObj;
+}
+
 function getEmail() {
     var customers = [];
     var selectedOption = $("#email-list option:selected").text();
@@ -76,10 +108,10 @@ function getEmail() {
     return customerObj;
 };
 
-function getCustomers() {
+function getCustomers(currentType) {
     var customers = [];
     var startDate = $("#datepickerStart").val();
-    var endDate = $("#datepickerEnd").val();
+    var endDate = $("#datepickerEnd").val();;
 
     $("#customers-list li").each(function () {
         var isChecked = $(this).find("#customer-check").is(":checked");
@@ -93,11 +125,22 @@ function getCustomers() {
             customers.push(customer);
     });
 
-    var customersObj = {
-        StartDate: startDate,
-        EndDate: endDate,
-        Customers: customers
-    };
+    var customersObj = {}
+
+    if (currentType != "Stacked") {
+        customersObj = {
+            StartDate: startDate,
+            Customers: customers
+        };
+    } else {
+        customersObj = {
+            StartDate: startDate,
+            EndDate: endDate,
+            Customers: customers
+        };
+    }
+
+
 
     return customersObj;
 }

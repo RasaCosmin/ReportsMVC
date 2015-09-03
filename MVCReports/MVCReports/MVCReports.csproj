@@ -190,9 +190,11 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AccuracyModel.cs" />
     <Compile Include="Models\AccuracyViewModel.cs" />
+    <Compile Include="Models\AssignedProjectModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\UserProjectsModel.cs" />
     <Compile Include="Models\UserWithRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccuracySetupRepository.cs" />
@@ -306,9 +308,11 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\UserRole\Index.cshtml" />
     <Content Include="Views\UserRole\ModifyRole.cshtml" />
-    <Content Include="Views\Home\_CustomerLayout.cshtml" />
-    <Content Include="Views\Home\_EmailLayout.cshtml" />
+    <Content Include="Views\Home\_ListRangeDateLayout.cshtml" />
+    <Content Include="Views\Home\_EmailRangeDateLayout.cshtml" />
     <Content Include="Views\Home\_ReportLayout.cshtml" />
+    <Content Include="Views\Home\_EmailLayout.cshtml" />
+    <Content Include="Views\UserRole\AssingProjectToUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

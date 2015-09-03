@@ -65,6 +65,7 @@ namespace MVCReports.Controllers
                 accuracy = new AccuracyViewModel();
 
                 var today = DateTime.Today.AddMonths(-6);
+                var customersName = dbService.GetList(ReportType);
 
                 switch (ReportType)
                 {
@@ -72,6 +73,11 @@ namespace MVCReports.Controllers
 
                         accuracy.EndDate = today.ToString("dd-MM-yyyy");
                         accuracy.StartDate = today.AddMonths(-1).ToString("dd-MM-yyyy");
+
+                        if (customersName.FirstOrDefault().Equals("<>"))
+                        {
+                            customersName.Remove("<>");
+                        }
 
                         break;
                     case "Pie":
@@ -93,9 +99,6 @@ namespace MVCReports.Controllers
 
                         break;
                 }
-
-
-                var customersName = dbService.GetList(ReportType);
 
                 foreach (var name in customersName)
                 {
@@ -170,8 +173,8 @@ namespace MVCReports.Controllers
                     list.Add(emailEndDate);
 
                     var email = model.Customers.FirstOrDefault(e => e.Checked == true); 
-
-                    var emailsParam = new ReportParameter("pEmailAddress", email!=null?email.Name:"");
+                    
+                    var emailsParam = new ReportParameter("pEmailAddress", email != null ? email.Name : "" );
                     list.Add(emailsParam);
                     break;
                 case "Pie":

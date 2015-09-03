@@ -1,0 +1,32 @@
+﻿@model MVCReports.Models.AccuracyViewModel
+
+<body>
+            <div class="sidebar-reports">
+                <p>
+                    <label for="datepickerStart" id="datepickerStartText">Start Date: </label>
+                    @Html.TextBoxFor(m => m.StartDate, new { id = "datepickerStart" })
+                    @Html.HiddenFor(m => m.StartDate)
+                </p>
+
+                @if((string)ViewBag.Type != "Stacked")
+                {
+                    <p>
+                        <label for="datepickerEnd" id="datepickerEndText">End Date: </label>
+                        @Html.TextBoxFor(m => m.EndDate, new { id = "datepickerEnd" })
+                        @Html.HiddenFor(m => m.EndDate)
+                    </p>
+                }
+                <ul class="list-unstyled" id="customers-list">
+                    @for (int i = 0; i < Model.Customers.Count; i++)
+
+                {
+                        <li>
+                            <input type="checkbox" value="false" id="customer-check" />
+                            <label  id="customer-name">@Model.Customers[i].Name</label>
+                        </li>
+                    }
+                </ul>
+                @Html.HiddenFor(m=>m.Email)
+            </div>
+            <input  value="Generate Report" type="submit" class="btn btn-default submit mt20" id="generate-report-btn"/>
+</body>
