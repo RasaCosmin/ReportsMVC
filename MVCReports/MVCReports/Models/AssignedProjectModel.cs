@@ -9,5 +9,6 @@ namespace MVCReports.Models
     public class AssignedProjectModel
     {
         public Dictionary<string, List<Customer>> AssignedProject { get; set; }
+        public string UserName { get; set; }
     }
 }

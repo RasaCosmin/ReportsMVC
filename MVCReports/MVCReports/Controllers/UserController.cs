@@ -103,7 +103,7 @@ namespace MVCReports.Controllers
             projectList.Add("Stacked", ConstructCustomerList("Stacked", userName));
             projectList.Add("Accuracy", ConstructCustomerList("Accuracy", userName));
 
-            var assignedProjects= new AssignedProjectModel() { AssignedProject = projectList };
+            var assignedProjects= new AssignedProjectModel() { AssignedProject = projectList, UserName = userName };
 
             return View(assignedProjects);
         }
@@ -136,7 +136,28 @@ namespace MVCReports.Controllers
         [HttpPost]
         public ActionResult AssingProjectToUser(AssignedProjectModel projects)
         {
-            var t  = ModelState.IsValid;
+            var userProjects = db.UserProject.Where(e => e.UserName == projects.UserName);
+
+            foreach (var p in userProjects)
+            {
+                db.UserProject.Remove(p);
+                db.SaveChanges();
+            }
+
+           
+
+            foreach(var pair in projects.AssignedProject)
+            {
+                foreach(var item in pair.Value)
+                {
+                    if(item.Checked)
+                    {
+                        db.UserProject.Add(new UserProjectsModel { CustomerName = item.Name, Type = pair.Key, UserName = projects.UserName });
+                        db.SaveChanges();
+                    }
+                }
+            }
+
             return RedirectToAction("index");
         }
     }

@@ -29,16 +29,11 @@ namespace MVCReports.Controllers
         public HomeController()
         {
             db = new EntityContext();
-            if(ReportType==null||ReportType=="")
-            ReportType = "Email";
         }
 
         [Authorize]
         public async Task<ActionResult> Index(AccuracyViewModel response = null, string reportType="")
         {
-            if (reportType != "")
-                ReportType = reportType;
-
             var inSession = await VerifyAndSetUserRole();
 
             if(!inSession)
@@ -46,12 +41,27 @@ namespace MVCReports.Controllers
                 VerifySession();
             }
 
+            SetReportType(reportType);
 
             var accuracy = GenerateAccuracy(response); 
 
             ViewBag.Type = ReportType;
 
             return View(accuracy);
+        }
+
+        private void SetReportType(string reportType)
+        {
+            if (ReportType == null || ReportType == "")
+            {
+                var role = System.Web.HttpContext.Current.Session["role"];
+                if (role.ToString() == "Admin")
+                    ReportType = "Email";
+                else reportType = "Pie";
+            }
+
+            if (reportType != "")
+                ReportType = reportType;
         }
 
         private AccuracyViewModel GenerateAccuracy(AccuracyViewModel response)
@@ -61,11 +71,11 @@ namespace MVCReports.Controllers
 
             if (response.Customers.Count == 0 && (response.StartDate == null || response.EndDate == null))
             {
-                var dbService = new DatabaseService();
+              
                 accuracy = new AccuracyViewModel();
 
                 var today = DateTime.Today.AddMonths(-6);
-                var customersName = dbService.GetList(ReportType);
+                var customersName = GetCustomers();
 
                 switch (ReportType)
                 {
@@ -119,6 +129,20 @@ namespace MVCReports.Controllers
             ViewBag.reportView = reportViewer;
 
             return accuracy;
+        }
+
+        private List<string> GetCustomers()
+        {
+            var role = System.Web.HttpContext.Current.Session["role"];
+            var dbService = new DatabaseService();
+
+            if (role.ToString() == "Admin")
+                return dbService.GetList(ReportType);
+            else
+            {
+                var customers = db.UserProject.Where(e => e.UserName == User.Identity.Name && e.Type == ReportType).Select(r => r.CustomerName).ToList();
+                return customers; 
+            }
         }
 
         private void VerifySession()
