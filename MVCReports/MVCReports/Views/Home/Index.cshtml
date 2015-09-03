@@ -14,10 +14,16 @@
         @switch (type)
         {
             case "Email":
-                @Html.Partial("_EmailLayout", Model)
+                @Html.Partial("_EmailRangeDateLayout", Model)
                 break;
             case "Pie":
-                @Html.Partial("_CustomerLayout", Model)
+                @Html.Partial("_ListRangeDateLayout", Model)
+                break;
+            case "Accuracy":
+                @Html.Partial("_EmailLayout", Model)
+                break;
+            case "Stacked":
+                @Html.Partial("_ListRangeDateLayout", Model)
                 break;
             default:
                 break;

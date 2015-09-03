@@ -305,9 +305,10 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\UserRole\Index.cshtml" />
     <Content Include="Views\UserRole\ModifyRole.cshtml" />
-    <Content Include="Views\Home\_CustomerLayout.cshtml" />
-    <Content Include="Views\Home\_EmailLayout.cshtml" />
+    <Content Include="Views\Home\_ListRangeDateLayout.cshtml" />
+    <Content Include="Views\Home\_EmailRangeDateLayout.cshtml" />
     <Content Include="Views\Home\_ReportLayout.cshtml" />
+    <Content Include="Views\Home\_EmailLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
