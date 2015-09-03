@@ -305,7 +305,7 @@
     <Content Include="Views\UserRole\Index.cshtml" />
     <Content Include="Views\UserRole\ModifyRole.cshtml" />
     <Content Include="Views\Home\_CustomerLayout.cshtml" />
-    <Content Include="Views\Home\_ClientLayout.cshtml" />
+    <Content Include="Views\Home\_EmailLayout.cshtml" />
     <Content Include="Views\Home\_ReportLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
