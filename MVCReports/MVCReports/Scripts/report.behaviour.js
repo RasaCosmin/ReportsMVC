@@ -17,25 +17,26 @@
 });
 
 function sendCustomersFromList(currentType) {
-    var customers = [];
+    var list = [];
 
     switch (currentType) {
         case "Email":
+            list = getEmail();
             break;
         case "Pie":
-            customers = getCustomers();
+            list = getCustomers();
             break;
         case "Accuracy":
             break;
         case "Stacked":
-            customers = getCustomers();
+            list = getCustomers();
             break;
         default:
             break;
     }
    
 
-    $.post("/Home/GenerateReport", { customers: JSON.stringify(customers) }, function (result) {
+    $.post("/Home/GenerateReport", { customers: JSON.stringify(list) }, function (result) {
         $("#report-center").html(result);
     });
 }
@@ -55,6 +56,26 @@ function selectCheckBoxOnNameClick() {
     });
 };
 
+function getEmail() {
+    var customers = [];
+    var selectedOption = $("#email-list option:selected").text();
+    var startDate = $("#datepickerStart").val();
+    var endDate = $("#datepickerEnd").val();
+    var customer = {
+        Name: selectedOption,
+        Checked : true
+    };
+
+    customers.push(customer);
+    var customerObj = {
+        StartDate: startDate,
+        EndDate: endDate,
+        Customers: customers
+    };
+
+    return customerObj;
+};
+
 function getCustomers() {
     var customers = [];
     var startDate = $("#datepickerStart").val();
@@ -68,7 +89,8 @@ function getCustomers() {
             Checked: isChecked
         };
 
-        customers.push(customer);
+        if(isChecked)
+            customers.push(customer);
     });
 
     var customersObj = {

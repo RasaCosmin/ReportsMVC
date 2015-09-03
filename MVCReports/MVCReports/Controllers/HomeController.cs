@@ -232,7 +232,7 @@ namespace MVCReports.Controllers
         [HttpPost]
         public PartialViewResult GenerateReport(string customers)
         {
-            if (customers == null)
+            if (customers == null || customers.Equals("[]"))
             {
                 return PartialView("_ReportLayout");
             }
