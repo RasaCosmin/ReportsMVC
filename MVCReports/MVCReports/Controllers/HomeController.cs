@@ -24,20 +24,20 @@ namespace MVCReports.Controllers
     public class HomeController : Controller
     {
         private EntityContext db;
-        private static string _reportType;
+        public static string ReportType;
 
         public HomeController()
         {
             db = new EntityContext();
-            if(_reportType==null||_reportType=="")
-            _reportType = "Email";
+            if(ReportType==null||ReportType=="")
+            ReportType = "Email";
         }
 
         [Authorize]
         public async Task<ActionResult> Index(AccuracyViewModel response = null, string reportType="")
         {
             if (reportType != "")
-                _reportType = reportType;
+                ReportType = reportType;
 
             var inSession = await VerifyAndSetUserRole();
 
@@ -49,7 +49,7 @@ namespace MVCReports.Controllers
 
             var accuracy = GenerateAccuracy(response); 
 
-            ViewBag.Type = _reportType;
+            ViewBag.Type = ReportType;
 
             return View(accuracy);
         }
@@ -66,7 +66,7 @@ namespace MVCReports.Controllers
 
                 var today = DateTime.Today.AddMonths(-6);
 
-                switch (_reportType)
+                switch (ReportType)
                 {
                     case "Email":
 
@@ -95,7 +95,7 @@ namespace MVCReports.Controllers
                 }
 
 
-                var customersName = dbService.GetList(_reportType);
+                var customersName = dbService.GetList(ReportType);
 
                 foreach (var name in customersName)
                 {
@@ -159,7 +159,7 @@ namespace MVCReports.Controllers
 
             var list = new List<ReportParameter>();
 
-            switch (_reportType)
+            switch (ReportType)
             {
                 case "Email":
                     reportViewer.ServerReport.ReportPath = "/Genpact/Reports/EmailOffice365";

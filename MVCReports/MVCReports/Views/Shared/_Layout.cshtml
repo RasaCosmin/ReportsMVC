@@ -40,19 +40,21 @@
             }
         </div>
     </div>
+@if (role != null)
+{
     <div class="navbar navbar-inverse tabs">
         <div class="container">
             <div class="navbar-inner">
                 <ul class="nav navbar-nav">
-                    <li class="@(ViewBag.Type == "Email"?"active" : "")">@Html.ActionLink("Email Office", "Index", "Home", new { reportType = "Email" }, null)</li>
-                    <li  class="@(ViewBag.Type == "Pie"?"active" : "")">@Html.ActionLink("Pie Chart", "Index", "Home", new { reportType = "Pie" }, null)</li>
-                    <li  class="@(ViewBag.Type == "Accuracy"?"active" : "")">@Html.ActionLink("Accuracy Statistik", "Index", "Home", new { reportType = "Accuracy" }, null)</li>
-                    <li  class="@(ViewBag.Type == "Stacked"?"active" : "")">@Html.ActionLink("Stacked", "Index", "Home", new { reportType = "Stacked" }, null)</li>
+                    <li class="@(ViewBag.Type == "Email" ? "active" : "")">@Html.ActionLink("Email Office", "Index", "Home", new { reportType = "Email" }, null)</li>
+                    <li  class="@(ViewBag.Type == "Pie" ? "active" : "")">@Html.ActionLink("Pie Chart", "Index", "Home", new { reportType = "Pie" }, null)</li>
+                    <li  class="@(ViewBag.Type == "Accuracy" ? "active" : "")">@Html.ActionLink("Accuracy Statistik", "Index", "Home", new { reportType = "Accuracy" }, null)</li>
+                    <li  class="@(ViewBag.Type == "Stacked" ? "active" : "")">@Html.ActionLink("Stacked", "Index", "Home", new { reportType = "Stacked" }, null)</li>
                 </ul>
             </div>
         </div>
      </div>
- 
+}
     <div class="container body-content">
         @RenderBody()
     </div>  

@@ -408,8 +408,9 @@ namespace MVCReports.Controllers
         {
             System.Web.HttpContext.Current.Session.Remove("role");
             var role = System.Web.HttpContext.Current.Session["role"];
+            HomeController.ReportType = null; 
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
 
         //
