@@ -29,6 +29,7 @@ namespace MVCReports.Controllers
         public HomeController()
         {
             db = new EntityContext();
+            if(_reportType==null||_reportType=="")
             _reportType = "Email";
         }
 
@@ -154,31 +155,65 @@ namespace MVCReports.Controllers
             reportViewer.ProcessingMode = ProcessingMode.Remote;
 
             reportViewer.ServerReport.ReportServerCredentials = new CustomCredentials();
-           
-            reportViewer.ServerReport.ReportPath = "/Genpact/Reports/VerticalStackedBar3Months";
             reportViewer.ServerReport.ReportServerUrl = new Uri(AppConstants.ServerURL);
-            
+
             var list = new List<ReportParameter>();
 
-            var p1 = new ReportParameter("StartDate", model.StartDate);
-            list.Add(p1);
-           
-            var p2 = new ReportParameter("Last3MonthDate", model.EndDate);
-            list.Add(p2);
+            switch (_reportType)
+            {
+                case "Email":
+                    reportViewer.ServerReport.ReportPath = "/Genpact/Reports/EmailOffice365";
+                    var emailStartDate = new ReportParameter("pStartDate", model.StartDate);
+                    list.Add(emailStartDate);
 
-            var customers = model.Customers;
-            var projects = new string[customers.Count];
+                    var emailEndDate = new ReportParameter("pEndDate", model.EndDate);
+                    list.Add(emailEndDate);
 
-            for(var i= 0;i< customers.Count;i++)
-                if (selectAll || customers[i].Checked)
-                    projects[i] = customers[i].Name;
+                    var email = model.Customers.FirstOrDefault(e => e.Checked == true); 
 
-            //var projectsNames = projects.ToArray();
-            var projectsNames = new string[] { "3M"};
+                    var emailsParam = new ReportParameter("pEmailAddress", email!=null?email.Name:"");
+                    list.Add(emailsParam);
+                    break;
+                case "Pie":
+                    reportViewer.ServerReport.ReportPath = "/Genpact/Reports/PieChart";
+                    var pieStartDate = new ReportParameter("StartDate", model.StartDate);
+                    list.Add(pieStartDate);
 
-            var p3 = new ReportParameter("Project", projectsNames);          
-            list.Add(p3);
+                    var pieEndDate = new ReportParameter("EndDate", model.EndDate);
+                    list.Add(pieEndDate);
 
+                    var pieCustomers = model.Customers;
+                    var pieProjects = new string[pieCustomers.Count];
+
+                    for (var i = 0; i < pieCustomers.Count; i++)
+                        if (selectAll || pieCustomers[i].Checked)
+                            pieProjects[i] = pieCustomers[i].Name;
+
+                    var pieProjectsParam = new ReportParameter("Project", pieProjects);
+                    list.Add(pieProjectsParam);
+                    break;
+                case "Accuracy":
+                    reportViewer.ServerReport.ReportPath = "/Genpact/Reports/VerticalBar_AccuracyStatistik";
+                    var acc = model.Customers.FirstOrDefault(e => e.Checked == true);
+                    var accParam = new ReportParameter("pCustomer", acc!=null?acc.Name:"");
+                    list.Add(accParam);
+                    break;
+                case "Stacked":
+                    reportViewer.ServerReport.ReportPath = "/Genpact/Reports/VerticalStackedBar3Months";
+                    var stackedStartDate = new ReportParameter("StartDate", model.StartDate);
+                    list.Add(stackedStartDate);
+
+                    var customers = model.Customers;
+                    var projects = new string[customers.Count];
+
+                    for (var i = 0; i < customers.Count; i++)
+                        if (selectAll || customers[i].Checked)
+                            projects[i] = customers[i].Name;
+
+                    var stackedProjects = new ReportParameter("Project", projects);
+                    list.Add(stackedProjects);
+                    break;
+            }         
 
             reportViewer.ServerReport.SetParameters(list);
             reportViewer.ServerReport.Refresh();

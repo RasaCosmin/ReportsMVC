@@ -18,13 +18,13 @@ namespace MVCReports.Helpers
             {
                                 
                 case "Pie":
-                    sqlQuery = "SELECT DISTINCT [Project] FROM[operations].[dbo].[Cumulative_All]";
+                    sqlQuery = @"SELECT DISTINCT [Project] FROM[operations].[dbo].[Cumulative_All]";
                     break;
                 case "Accuracy":
-                    sqlQuery = "SELECT DISTINCT asetup.[CUSTOMER]"+
-                                "FROM [operations].[dbo].[ACCURACY_STATISTIK] AS astat"+
-                                "INNER JOIN [operations].[dbo].[Accuracy_Setup]"+
-                                "AS asetup ON astat.[customer_id]= asetup.[ID]";
+                    sqlQuery = @"SELECT DISTINCT asetup.[CUSTOMER] "+
+                                "FROM [operations].[dbo].[ACCURACY_STATISTIK] AS astat "+
+                                "INNER JOIN [operations].[dbo].[Accuracy_Setup] "+
+                                "AS asetup ON astat.[customer_id] = asetup.[ID]";
 
                     
 
