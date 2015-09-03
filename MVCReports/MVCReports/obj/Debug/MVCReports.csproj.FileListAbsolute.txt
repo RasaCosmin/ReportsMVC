@@ -287,4 +287,3 @@ C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.Owin.Se
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.dll
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.pdb
 C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\obj\Debug\MVCReports.csprojResolveAssemblyReference.cache
-C:\Users\Andrei\Documents\ReportsMVC\MVCReports\MVCReports\bin\Microsoft.ReportViewer.WebForms.xml

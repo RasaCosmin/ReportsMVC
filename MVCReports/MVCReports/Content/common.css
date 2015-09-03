@@ -39,6 +39,25 @@ h1,h2,h3 {
     margin-top: 5%;
 }
 
+/*margin-bottom*/ 
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb50 {
+    margin-bottom: 50px;
+}
+
+.mb70 {
+    margin-bottom: 70px;
+}
+
+.mb100 {
+    margin-bottom: 100px;
+}
+
+
 /*padding-top*/
 
 .pt20 {
