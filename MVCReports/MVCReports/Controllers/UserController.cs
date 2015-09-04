@@ -141,7 +141,6 @@ namespace MVCReports.Controllers
             foreach (var p in userProjects)
             {
                 db.UserProject.Remove(p);
-                db.SaveChanges();
             }
 
            

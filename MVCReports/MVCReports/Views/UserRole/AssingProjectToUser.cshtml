@@ -20,7 +20,7 @@
                         {
                             <li>
                                 @Html.CheckBoxFor(m => m.AssignedProject[pair.Key][i].Checked, new { data_check = Model.AssignedProject[pair.Key][i].Name, id = "customer-check" })
-                                @Html.DisplayFor(m => m.AssignedProject[pair.Key][i].Name)
+                                @Html.Label(Model.AssignedProject[pair.Key][i].Name,new { id = "customer-name" })
                                 @Html.HiddenFor(m => m.AssignedProject[pair.Key][i].Name)
                             </li>
                         }

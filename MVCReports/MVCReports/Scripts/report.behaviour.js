@@ -67,17 +67,6 @@ function selectCheckBoxOnNameClick() {
                 checkBtn.prop('checked', true);
             }
         });
-
-        //$(this).find("#customer-check").click(function () {
-        //    var isChecked = $(this).find("#customer-check").is(":checked");
-        //    var name = $(this).find("#customer-name").text();
-
-        //    if (isChecked == true) {
-        //        $(this).find("#customer-check").prop('checked', false);
-        //    } else {
-        //        $(this).find("#customer-check").prop('checked', true);
-        //    }
-        //});
     });
 };
 
