@@ -3,6 +3,8 @@
 
 @{ 
     var report = ViewBag.reportView as Microsoft.Reporting.WebForms.ReportViewer;
+    report.ShowZoomControl = true;
+    report.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
 }
 
 

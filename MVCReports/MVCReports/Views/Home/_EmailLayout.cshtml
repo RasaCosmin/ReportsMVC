@@ -3,7 +3,7 @@
 <body>
     <div class="sidebar-reports">
         <p>
-            <label for="customer-dropdown-list" >Select Email: </label>
+            <label for="customer-dropdown-list" >Select Customer: </label>
             @Html.DropDownListFor(m => Model.Email, new SelectList(Model.Customers.Select(c => c.Name).ToList(), Model.Customers.First()), new { id = "customer-dropdown-list" })
         </p>
     </div>
