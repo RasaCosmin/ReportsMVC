@@ -253,8 +253,15 @@ namespace MVCReports.Controllers
             reportViewer.ShowParameterPrompts = false;
             reportViewer.Width = Unit.Percentage(100);
             reportViewer.Height = Unit.Pixel(600);
-
             reportViewer.BorderStyle = BorderStyle.NotSet;
+            reportViewer.BackColor = System.Drawing.ColorTranslator.FromHtml("#cccccc");
+            //reportViewer.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+            ////reportViewer.LinkDisabledColor = System.Drawing.Color.Transparent;
+            //reportViewer.LinkDisabledColor = System.Drawing.ColorTranslator.FromHtml("#555555");
+            reportViewer.LinkActiveColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+            reportViewer.LinkActiveHoverColor = System.Drawing.ColorTranslator.FromHtml("#cccccc");
+            //reportViewer.ToolBarItemBorderColor = System.Drawing.ColorTranslator.FromHtml("#3498db");
+            
 
             return reportViewer;
         }
