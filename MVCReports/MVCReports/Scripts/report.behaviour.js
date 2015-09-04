@@ -51,6 +51,7 @@ function sendCustomersFromList(currentType) {
 
     $.post("/Home/GenerateReport", { customers: JSON.stringify(list) }, function (result) {
         $("#report-center").html(result);
+        renderWorkflow();
     });
 }
 

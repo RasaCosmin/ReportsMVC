@@ -126,6 +126,12 @@ namespace MVCReports.Controllers
 
             var reportViewer = ConstructReportView(accuracy, isAll);
 
+            if (ViewBag.reportView != null)
+            {
+                var report = ViewBag.reportView as ReportViewer;
+                reportViewer.Width = report.Width;
+            }
+
             ViewBag.reportView = reportViewer;
 
             return accuracy;
@@ -245,8 +251,10 @@ namespace MVCReports.Controllers
             reportViewer.ServerReport.SetParameters(list);
             reportViewer.ServerReport.Refresh();
             reportViewer.ShowParameterPrompts = false;
-            reportViewer.Width = Unit.Pixel(720);
+            reportViewer.Width = Unit.Percentage(100);
             reportViewer.Height = Unit.Pixel(600);
+
+            reportViewer.BorderStyle = BorderStyle.NotSet;
 
             return reportViewer;
         }

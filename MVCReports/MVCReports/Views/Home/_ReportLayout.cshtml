@@ -1,7 +1,13 @@
 ﻿@using ReportViewerForMvc
 
+
 @{ 
     var report = ViewBag.reportView as Microsoft.Reporting.WebForms.ReportViewer;
 }
 
-@Html.ReportViewer(ViewBag.reportView as Microsoft.Reporting.WebForms.ReportViewer, new { height = "200" })
+
+
+
+
+@Html.ReportViewer(report, new { id= "reportId" })
+
