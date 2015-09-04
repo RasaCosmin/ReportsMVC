@@ -251,10 +251,10 @@ namespace MVCReports.Controllers
             reportViewer.ServerReport.SetParameters(list);
             reportViewer.ServerReport.Refresh();
             reportViewer.ShowParameterPrompts = false;
-            reportViewer.Width = Unit.Pixel(720);
+            reportViewer.Width = Unit.Percentage(100);
             reportViewer.Height = Unit.Pixel(600);
 
-            reportViewer.ZoomMode = ZoomMode.PageWidth;
+            reportViewer.BorderStyle = BorderStyle.NotSet;
 
             return reportViewer;
         }
