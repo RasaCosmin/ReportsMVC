@@ -7,7 +7,12 @@
     ViewBag.Title = "Home Page";
     var type = (string) ViewBag.Type;
 }
-
+@if (Model.Customers.Count == 0)
+{
+<p><h2>You have no customer to view the report. Please contact the site administrator to grant access to this page.</h2></p>
+}
+else
+{
 <div class="row mt20 reports">
 
     <div class="col-md-3" id="customers-partial-left">
@@ -35,3 +40,4 @@
         @Html.Partial("_ReportLayout")
     </div>
 </div>
+}
