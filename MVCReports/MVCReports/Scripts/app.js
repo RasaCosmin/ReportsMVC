@@ -67,3 +67,14 @@ $(function () {
     $("#datepickerEnd").datepicker({ dateFormat: 'dd-mm-yy' }).val();
 });
 
+$(document).ready(function () {
+    renderWorkflow();
+});
+
+function renderWorkflow() {
+    var width = $("#report-center").width();
+    console.log(width);
+    $("#reportId").css("width", width);
+    console.log($("#reportId").width());
+    
+}
