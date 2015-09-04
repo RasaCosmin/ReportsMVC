@@ -68,6 +68,12 @@ namespace MVCReports.Controllers
 
         public ActionResult ModifyRole(string id)
         {
+
+            if (id == null || id == "")
+            {
+                return RedirectToAction("Index");
+            }
+            // to do check if id is not null 
             var u = context.Users.Where(us => us.Id == id).FirstOrDefault();
             var user = new UserWithRole();
             user.UserName = u.UserName;

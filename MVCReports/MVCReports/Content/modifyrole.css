@@ -1,0 +1,33 @@
+﻿#Roles {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    border: solid 4px #c9c9c9;
+    -webkit-transition: border 0.3s;
+    -moz-transition: border 0.3s;
+    -o-transition: border 0.3s;
+    transition: border 0.3s;
+}
+
+.user-role span {
+    margin-bottom: 10px;
+}
+
+.user-role p {
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.user-role span p:last-child {
+    border: 4px solid #c9c9c9;
+    padding: 10px;
+}
+
+.user-role span:last-of-type p {
+    border: 0;
+    padding: 0;
+}
+
+
+    
